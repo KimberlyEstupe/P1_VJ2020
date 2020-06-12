@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1591505855 source:c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstring>
+	"Menus.h"
+
+1591894848 source:c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\src\cubo.cpp
+	"Cubo.h"
+	<stdlib.h>
+	<fstream>
+	<iostream>
+	<clocale>
+	<cstring>
+	<sstream>
+
+1591681626 c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\include\cubo.h
+	<iostream>
+	<sstream>
+	<string>
+
+1591894265 source:c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\src\listacirculardoble.cpp
+	"ListaCircularDoble.h"
+	<stdlib.h>
+	<fstream>
+	<iostream>
+	<clocale>
+	<sstream>
+	<string>
+
+1591892213 c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\include\listacirculardoble.h
+	<iostream>
+	<sstream>
+	<string>
+
+1591892248 source:c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\src\menus.cpp
+	"Menus.h"
+	<iostream>
+	<stdio.h>
+	<cstring>
+	<time.h>
+	<stdlib.h>
+	"Cubo.h"
+	"ListaCircularDoble.h"
+
+1591897953 c:\users\kimberlyestupe\desktop\codeblock\p1_vj2020\include\menus.h
+	"Cubo.h"
+	<iostream>
+	<sstream>
+	<string>
+

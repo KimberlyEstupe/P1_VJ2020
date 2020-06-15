@@ -51,19 +51,88 @@ void ListaCircularDoble::mostrar(){
 }
 
 void ListaCircularDoble::OrdenarAs(){
-    if(cabeza->ant->IdTransaccion<cabeza->IdTransaccion){
-        cout<<"En el if"<<endl;
-    }
     mostrar();
+    cout<<endl;
+    if(cabeza!=nullptr){
+        if(cabeza->sig!=cabeza){
+            NodoCD* cola=cabeza->ant;
+            if(cabeza->ant->IdTransaccion < cabeza->IdTransaccion){
+                if(cabeza->sig!=cola){//3 a mas nodos
+                       cout<<"Entro \n";
+                }else{//solo hay 2 nodos
+                    NodoCD* ultimo=cola;
+                    cola=cabeza;
+                    cabeza=ultimo;
+                    cabeza->sig=cola;
+                    cabeza->ant=cola;
+                    cola->sig=cabeza;
+                    cola->ant=cabeza;
+                }
+            }
+        }
+
+    }else cout<<"La lista esa vacia"<<endl;
 }
 
 void ListaCircularDoble::OrdenarDes(){
-    if(cabeza->ant->IdTransaccion >cabeza->IdTransaccion){
-        cout<<"Des"<<endl;
-    }
-    mostrar();
-}
+     mostrar();
+    cout<<endl;
+    if(cabeza!=nullptr){
+        if(cabeza->sig!=cabeza){
 
+            NodoCD* cola=cabeza->ant;
+            if(cabeza->ant->IdTransaccion > cabeza->IdTransaccion){
+
+                if(cabeza->sig!=cola){//3 a mas nodos
+                    NodoCD* primero;
+                    NodoCD* segundo;
+                    NodoCD* siguiente;
+                    NodoCD* anterior;
+                    NodoCD* nuevaCabeza;
+
+                    do{
+                        primero=cabeza;
+                        segundo=cabeza->sig;
+                        siguiente=segundo->sig;
+                        anterior=cabeza->ant;
+                        nuevaCabeza=cabeza->sig;
+
+                           do{
+                                segundo -> sig = primero;
+                                primero -> ant = segundo;
+                                segundo->ant = anterior;
+                                primero->sig = siguiente;
+                                siguiente->ant = primero;
+                                anterior->sig = segundo;
+                                segundo = primero->sig;
+                                siguiente = segundo->sig;
+                                anterior = primero->ant;
+                            }while(segundo>primero &&segundo!=nuevaCabeza);
+                        cabeza=nuevaCabeza;
+                        cout<<"\n------------------------------------------------------------------------------------------------------"<<endl;
+                        mostrar();
+                        cout<<"\n------------------------------------------------------------------------------------------------------"<<endl;
+                        system("PAUSE");
+
+                    }while(cabeza!=cola);
+
+                }else{//solo hay 2 nodos
+                    NodoCD* ultimo=cola;
+                    cola=cabeza;
+                    cabeza=ultimo;
+                    cabeza->sig=cola;
+                    cabeza->ant=cola;
+                    cola->sig=cabeza;
+                    cola->ant=cabeza;
+                }
+            }
+        }
+        cout<<"Termino \n";
+        //system("PAUSE");
+        mostrar();
+    }else cout<<"La lista esa vacia"<<endl;
+}
+//----------------------------------------------------- R E P O R T E S--------------------------------------
 void ListaCircularDoble::ReporteTransacciones(){
     string Cadena;
     NodoCD* aux=cabeza;

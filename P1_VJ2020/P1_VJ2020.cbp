@@ -34,10 +34,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/ArbolAVL.h" />
 		<Unit filename="include/Cubo.h" />
 		<Unit filename="include/ListaCircularDoble.h" />
 		<Unit filename="include/Menus.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ArbolAVL.cpp" />
 		<Unit filename="src/Cubo.cpp" />
 		<Unit filename="src/ListaCircularDoble.cpp" />
 		<Unit filename="src/Menus.cpp" />

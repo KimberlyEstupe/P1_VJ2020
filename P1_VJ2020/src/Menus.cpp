@@ -292,7 +292,7 @@ string Menus::Mayusculas(string cadena){
 }
 
 string Menus::GenerarClave(){
-    char letras[]= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'};
+    char letras[]= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9'};
     int longitud=sizeof(letras)/sizeof(*letras);
     string clave="";
     for(int i=0; i <= 14; i++){

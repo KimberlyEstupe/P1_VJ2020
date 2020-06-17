@@ -32,6 +32,8 @@ class ArbolAVL
         ArbolAVL();
         void Insertar(string id, string name, string descrip);
         void Busca(string id);
+        void RentarAc(string id);
+        void ModificaDescripcion(string id, string descripcion);
         void ReporteAVL();
 
 

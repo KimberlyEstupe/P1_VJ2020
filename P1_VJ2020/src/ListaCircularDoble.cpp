@@ -5,6 +5,7 @@
 #include <clocale>
 #include <sstream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 ListaCircularDoble::ListaCircularDoble()
@@ -20,7 +21,7 @@ void ListaCircularDoble::InsertarCD(string IdTran, string IdAc, string vende, st
         cabeza->sig=cabeza;
     }else{
         NodoCD* aux=cabeza;
-        while(aux->sig!=cabeza && aux->IdTransaccion<IdTran){
+        while(aux->sig!=cabeza && aux->IdTransaccion.compare(nuevo->IdTransaccion)==1){
             aux=aux->sig;
         }
         if(aux->sig==cabeza){
@@ -56,7 +57,6 @@ void ListaCircularDoble::OrdenarAs(){
     if(cabeza!=nullptr){
         if(cabeza->sig!=cabeza){
             NodoCD* cola=cabeza->ant;
-            if(cabeza->ant->IdTransaccion < cabeza->IdTransaccion){
                 if(cabeza->sig!=cola){//3 a mas nodos
                        cout<<"Entro \n";
                 }else{//solo hay 2 nodos
@@ -68,7 +68,6 @@ void ListaCircularDoble::OrdenarAs(){
                     cola->sig=cabeza;
                     cola->ant=cabeza;
                 }
-            }
         }
 
     }else cout<<"La lista esa vacia"<<endl;
@@ -81,8 +80,6 @@ void ListaCircularDoble::OrdenarDes(){
         if(cabeza->sig!=cabeza){
 
             NodoCD* cola=cabeza->ant;
-            if(cabeza->ant->IdTransaccion > cabeza->IdTransaccion){
-
                 if(cabeza->sig!=cola){//3 a mas nodos
                     NodoCD* primero;
                     NodoCD* segundo;
@@ -90,7 +87,7 @@ void ListaCircularDoble::OrdenarDes(){
                     NodoCD* anterior;
                     NodoCD* nuevaCabeza;
 
-                    do{
+                    //do{
                         primero=cabeza;
                         segundo=cabeza->sig;
                         siguiente=segundo->sig;
@@ -98,23 +95,31 @@ void ListaCircularDoble::OrdenarDes(){
                         nuevaCabeza=cabeza->sig;
 
                            do{
-                                segundo -> sig = primero;
-                                primero -> ant = segundo;
-                                segundo->ant = anterior;
-                                primero->sig = siguiente;
-                                siguiente->ant = primero;
-                                anterior->sig = segundo;
-                                segundo = primero->sig;
-                                siguiente = segundo->sig;
-                                anterior = primero->ant;
-                            }while(segundo>primero &&segundo!=nuevaCabeza);
+                                if(segundo->IdTransaccion.compare(primero->IdTransaccion)==-1){
+                                    segundo -> sig = primero;
+                                    primero -> ant = segundo;
+                                    segundo->ant = anterior;
+                                    primero->sig = siguiente;
+                                    siguiente->ant = primero;
+                                    anterior->sig = segundo;
+                                    segundo = primero->sig;
+                                    siguiente = segundo->sig;
+                                    anterior = primero->ant;
+                                }else{
+                                    primero=primero->sig;
+                                    segundo=primero->sig;
+                                    siguiente=segundo->sig;
+                                    anterior=cabeza->ant;
+                                }
+
+                            }while(segundo!=nuevaCabeza);
                         cabeza=nuevaCabeza;
                         cout<<"\n------------------------------------------------------------------------------------------------------"<<endl;
                         mostrar();
                         cout<<"\n------------------------------------------------------------------------------------------------------"<<endl;
                         system("PAUSE");
 
-                    }while(cabeza!=cola);
+                    //}while(cabeza!=cola);
 
                 }else{//solo hay 2 nodos
                     NodoCD* ultimo=cola;
@@ -125,7 +130,7 @@ void ListaCircularDoble::OrdenarDes(){
                     cola->sig=cabeza;
                     cola->ant=cabeza;
                 }
-            }
+
         }
         cout<<"Termino \n";
         //system("PAUSE");

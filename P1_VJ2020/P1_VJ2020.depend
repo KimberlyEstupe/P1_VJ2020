@@ -66,7 +66,7 @@
 	<sstream>
 	<string>
 
-1592258622 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\arbolavl.cpp
+1592368040 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\arbolavl.cpp
 	"ArbolAVL.h"
 	<stdlib.h>
 	<fstream>
@@ -75,7 +75,7 @@
 	<cstring>
 	<sstream>
 
-1592258605 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\arbolavl.h
+1592367884 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\arbolavl.h
 	<string>
 
 1592107888 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\cubo.cpp
@@ -87,7 +87,7 @@
 	<cstring>
 	<sstream>
 
-1592258689 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\listacirculardoble.cpp
+1592349944 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\listacirculardoble.cpp
 	"ListaCircularDoble.h"
 	<stdlib.h>
 	<fstream>
@@ -95,9 +95,21 @@
 	<clocale>
 	<sstream>
 	<string>
+	<cstring>
 
-1592107888 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\listacirculardoble.h
+1592262659 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\listacirculardoble.h
 	<iostream>
 	<sstream>
 	<string>
+
+1592368152 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\menus.cpp
+	"Menus.h"
+	<iostream>
+	<stdio.h>
+	<cstring>
+	<time.h>
+	<stdlib.h>
+	"Cubo.h"
+	"ListaCircularDoble.h"
+	"ArbolAVL.h"
 

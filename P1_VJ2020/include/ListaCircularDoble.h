@@ -46,12 +46,13 @@ class ListaCircularDoble
         void InsertarCD(string IdTran, string IdAc, string vende, string compra, string depar, string empres, string fec, string time);
         void OrdenarDes();
         void OrdenarAs();
+        void mostrar();
 
         void ReporteTransacciones();
 
         void TransPorUs(string usuario);
     private:
-        void mostrar();
+
         void ReporteCD(string titulo, string texto);
         NodoCD* cabeza;
 };

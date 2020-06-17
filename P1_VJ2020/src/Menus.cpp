@@ -8,23 +8,33 @@
 //---------Archivos--------
 #include "Cubo.h"
 #include "ListaCircularDoble.h"
+#include "ArbolAVL.h"
 Cubo cubo;
 ListaCircularDoble LCD;
 ListaCircularDoble LC2;
+ArbolAVL AVL;
 using namespace std;
 
 void Menus::pruebasCodigo(){
-    LCD.InsertarCD(GenerarClave(),"y8","ll","x","sdf","z","66","pp");
+    /*LCD.InsertarCD(GenerarClave(),"y8","ll","x","sdf","z","66","pp");
     LCD.InsertarCD(GenerarClave(),"s9","ll","x","sdf","z","66","pp");
     LCD.InsertarCD(GenerarClave(),"s9","ll","sdf","x","z","66","pp");
     LCD.InsertarCD(GenerarClave(),"s9","sdf","ll","x","z","66","pp");
-    LCD.OrdenarAs();
+    LCD.mostrar();
+    LCD.OrdenarDes();*/
+
+    AVL.Insertar("KDKJF","dddd","ddd");
+    AVL.Insertar("HJGLD","dddd","ddd");
+    AVL.Insertar("MLPSS","dddd","ddd");
+    AVL.Insertar("POOS5","dddd","ddd");
+    AVL.RentarAc("HJGLD");
+    AVL.ModificaDescripcion("POOS5","nueva descripcion");
+    AVL.ReporteAVL();
+
+
 
     cout<<endl;
-    LC2.InsertarCD(GenerarClave(),"y8","ll","x","sdf","z","66","pp");
-    LC2.InsertarCD(GenerarClave(),"y8","ll","x","sdf","z","66","pp");
-    LC2.InsertarCD(GenerarClave(),"y8","ll","x","sdf","z","66","pp");
-    LC2.OrdenarAs();
+
 }
 
 

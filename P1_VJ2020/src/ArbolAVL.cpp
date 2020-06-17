@@ -47,7 +47,8 @@ nodoAVL* ArbolAVL::SimpleIzquierda(nodoAVL* hoja){
 
 //---------------------------METODOS DE BUSQUEDA---------------------
 void ArbolAVL::Busca(string id){
-    BuscarR(id, Raiz);
+    nodoAVL* buscado=BuscarR(id, Raiz);
+    cout<<buscado->nombre;
 }
 
 nodoAVL* ArbolAVL::BuscarR(string id ,nodoAVL* hoja){
@@ -56,6 +57,20 @@ nodoAVL* ArbolAVL::BuscarR(string id ,nodoAVL* hoja){
     else if (hoja->ID<id) return BuscarR(id,hoja->Der);
     else if (hoja->ID>id) return BuscarR(id,hoja->Izq);
 }
+//---------------------------METODOS DE ACTIVO RENTADO---------------------
+void ArbolAVL::RentarAc(string id){
+    nodoAVL* buscado=BuscarR(id, Raiz);
+    if(buscado!=nullptr) buscado->disponibilidad=false;
+    else cout<<"Este nodo no existe";
+}
+
+//---------------------------METODOS MODIFICAR DESCRIPCION---------------------
+void ArbolAVL::ModificaDescripcion(string id, string des){
+    nodoAVL* buscado=BuscarR(id, Raiz);
+     if(buscado!=nullptr) buscado->descripcion=des;
+    else cout<<"Este nodo no existe";
+}
+
 
 //--------------------------- REPORTE ---------------------
 void ArbolAVL::ReporteAVL(){
@@ -85,25 +100,33 @@ void ArbolAVL::ReporteAVL(){
 
 void ArbolAVL::ReporRecurAVl(nodoAVL* n){
     if(n!=nullptr){
+            if(cccaadenad==""){
+                cccaadenad="Nusuario [label=\" USUARIO\"]; \n";
+                cccaadenad2="Nusuario -> N"+n->ID+"[color=white]; \n";
+            }
             ReporRecurAVl(n->Izq);
-            cccaadenad+=" N"+n->ID+" [label=\" "+n->ID+"\"] \n";
+            if(n->disponibilidad==true){
+                cccaadenad+=" N"+n->ID+" [label=\" "+n->ID+" \n"+n->nombre+" \n"+n->descripcion+"\", color=green3, fontcolor=green3]; \n";
+            }else{
+                cccaadenad+=" N"+n->ID+" [label=\" "+n->ID+" \n"+n->nombre+" \n"+n->descripcion+"\", color=deeppink2, fontcolor=deeppink2]; \n";
+            }
 
             if(n->Izq!=nullptr){//crea apuntador a nodo izquierdo
-                cccaadenad2+=" N"+n->ID+" -> N"+n->Izq->ID+"\n";
+                cccaadenad2+=" N"+n->ID+" -> N"+n->Izq->ID+";\n";
             }else if(n->Izq==nullptr && n->Der!=nullptr){
-                cccaadenad2+=" N"+n->ID+" -> I"+n->ID+"[color=white] \n";
+                cccaadenad2+=" N"+n->ID+" -> I"+n->ID+"[color=white]; \n";
                 cccaadenad+=" I"+n->ID+" [label=\" Invis\", color=white, bgcolor=white, fontcolor=white]; \n";
             }
 
             if(n->Izq!=nullptr || n->Der!=nullptr){//Nodos invisibles
-                cccaadenad2+=" N"+n->ID+" -> M"+n->ID+"[color=white] \n";
+                cccaadenad2+=" N"+n->ID+" -> M"+n->ID+"[color=white]; \n";
                 cccaadenad+=" M"+n->ID+" [label=\" Invis\", color=white, bgcolor=white, fontcolor=white]; \n";
             }
 
             if(n->Der!=nullptr){//crea apuntador a nodo derecho
-                cccaadenad2+=" N"+n->ID+" -> N"+n->Der->ID+"\n";
+                cccaadenad2+=" N"+n->ID+" -> N"+n->Der->ID+";\n";
             }else if(n->Izq!=nullptr && n->Der==nullptr){
-                cccaadenad2+=" N"+n->ID+" -> D"+n->ID+"[color=white] \n";
+                cccaadenad2+=" N"+n->ID+" -> D"+n->ID+"[color=white]; \n";
                 cccaadenad+=" D"+n->ID+" [label=\" Invis\", color=white, bgcolor=white, fontcolor=white]; \n";
             }
             ReporRecurAVl(n->Der);

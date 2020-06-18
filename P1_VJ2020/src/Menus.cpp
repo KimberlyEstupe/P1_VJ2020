@@ -23,12 +23,12 @@ void Menus::pruebasCodigo(){
     LCD.mostrar();
     LCD.OrdenarDes();*/
 
-    AVL.Insertar("KDKJF","dddd","ddd");
-    AVL.Insertar("HJGLD","dddd","ddd");
-    AVL.Insertar("MLPSS","dddd","ddd");
-    AVL.Insertar("POOS5","dddd","ddd");
-    AVL.RentarAc("HJGLD");
-    AVL.ModificaDescripcion("POOS5","nueva descripcion");
+
+    AVL.Insertar("LOOS5","dddd","ddd");
+    AVL.Insertar("FOOS5","dddd","ddd");
+    AVL.Insertar("GOOS5","dddd","ddd");
+    AVL.Insertar("KOOS5","dddd","ddd");
+
     AVL.ReporteAVL();
 
 
@@ -44,7 +44,8 @@ void Menus::MUsuarioIngresado(string n){
     system("CLS");
     int op=8;
     do{
-    string name, des;
+    string name, des;//Agregar activo
+    string ac,descc;
         cout<<"\t \t \t \t*---------* M E N U   U S U A R I O  *---------* \n"<<endl;
         cout<<"Bienvenido "<<n<<"\n"<<endl;
         cout<<" 1. Agregar Activo  \n"<<endl;//
@@ -73,12 +74,21 @@ void Menus::MUsuarioIngresado(string n){
                 break;
 
             case 3: cout<<"\t \t \t*---------* M O D I F I C A R   A C T I V O  *---------* \n"<<endl;
+
+                cout<<"Ingrese activo que desea modificar: ";
+                cin>>name;
+                cout<<"Ingrese descripcion modificar: ";
+                cin>>des;
+                AVL.ModificaDescripcion(Mayusculas(name),des);
                 op=8;
                 system("CLS");
                 break;
 
             case 4: cout<<"\t \t \t*---------* R E N T A R   A C T I V O  *---------* \n"<<endl;
                 op=8;
+                cout<<"Ingrese el id de activo que desea rentar: ";
+                cin>>name;
+                AVL.RentarAc(Mayusculas(name));
                 system("CLS");
                 break;
 
@@ -93,6 +103,7 @@ void Menus::MUsuarioIngresado(string n){
                 break;
 
             case 7: cout <<"\nCERRANDO SESIÓN...\n \n"<<endl;
+                system("PAUSE");
                 inicio();
                 system("CLS");
                 break;

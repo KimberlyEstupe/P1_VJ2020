@@ -25,24 +25,102 @@ void ArbolAVL::Insertar(string id, string nombre, string desripcion){
         string p1, p2;
         while(tmp!=nullptr){
             auxP=tmp;
-            p1=nuevo->ID;
-            p2=tmp->ID;
-            if(p1.compare(p2)==1) tmp=tmp->Der;
-            else if(p1.compare(p2)==-1)tmp=tmp->Izq;
+            if(nuevo->ID.compare(tmp->ID)==1) tmp=tmp->Der;
+            else if(nuevo->ID.compare(tmp->ID)==-1)tmp=tmp->Izq;
         }
 
         nuevo->Padre=auxP;
         p1=nuevo->ID;
-        p2=auxP->ID;
+        p2=nuevo->Padre->ID;
 
-        if(p1.compare(p2)==-1) auxP->Izq =nuevo;
-        else if(p1.compare(p2)==1) auxP->Der =nuevo;
+        if(p1.compare(p2)==-1){
+                nuevo->Padre->Izq =nuevo;
+                Equilibrar(nuevo->Padre,IZQUIERDO,true);
+        }else if(p1.compare(p2)==1){
+            nuevo->Padre->Der =nuevo;
+            Equilibrar(nuevo->Padre,DERECHO,true);
+        }
+    }
+}
+
+//--------------------------- EQUILIBRAR ---------------------
+void ArbolAVL::Equilibrar(nodoAVL* nodo, int rama, bool nuevo){
+    bool continuar = true;
+    while(continuar && nodo){
+        if(nuevo)
+             if(rama == IZQUIERDO) nodo->fe--;
+             else                  nodo->fe++;
+        else
+             if(rama == IZQUIERDO) nodo->fe++;
+             else                  nodo->fe--;
+
+
+       if(nodo->fe == -2) {
+         /*if(nodo->izquierdo->FE == 1) RDD(nodo); // Rotación doble
+         else RSD(nodo); */                       // Rotación simple
+         continuar = false;
+      }
+      else if(nodo->fe == 2) {
+        if(nodo->Der->fe == -1) cout<<"Doble Iz"<<endl;//RDI(nodo); // Rotación doble
+         else SimpleIzquierda(nodo);
+         continuar = false;
+      }
+
+
+      if(nodo->Padre){
+        if(nodo->Padre->Der == nodo) rama = DERECHO;
+        else rama = IZQUIERDO;
+      }
+
+        nodo = nodo->Padre;
+
     }
 }
 
 //--------------------------- ROTACIONES ---------------------
-nodoAVL* ArbolAVL::SimpleIzquierda(nodoAVL* hoja){
-    return NULL;
+void ArbolAVL::SimpleIzquierda(nodoAVL* hoja){
+    nodoAVL* anterior=hoja->Padre;
+    nodoAVL* nodorota=hoja;
+    nodoAVL* sig=hoja->Der;
+    nodoAVL* ultimo=sig->Izq;
+
+    if(anterior){
+        if(anterior->Der==hoja) anterior->Der=sig;
+        else anterior->Izq=sig;
+    }else Raiz=sig;
+
+    nodorota->Der=ultimo;
+    sig->Izq=nodorota;
+
+    nodorota->Padre=sig;
+    if(ultimo) ultimo->Padre=nodorota;
+    sig->Padre=anterior;
+
+    nodorota->fe=0;
+    sig->fe=0;
+}
+
+void ArbolAVL::SimpleDerecha(nodoAVL* hoja){
+    nodoAVL* anterior=hoja->Padre;
+    nodoAVL* nodorota=hoja;
+    nodoAVL* sig=hoja->Izq;
+    nodoAVL* ultimo=sig->Der;
+
+    if(anterior){
+        if(anterior->Der==hoja) anterior->Der=sig;
+        else anterior->Izq=sig;
+    }else Raiz=sig;
+
+    nodorota->Izq=ultimo;
+    Sig->Der=nodorota;
+
+    nodorota->Padre=sig;
+    if(ultimo) ultimo->Padre=nodorota;
+    sig->Padre=anterior;
+
+    nodorota->fe=0;
+    sig->fe=0;
+
 }
 
 //---------------------------METODOS DE BUSQUEDA---------------------
@@ -85,7 +163,7 @@ void ArbolAVL::ReporteAVL(){
         f.open("ReporteAVL.dot");
         f<<"digraph G {" << endl;
                 f<<"rankdir = Lista;" <<endl;
-                f<<"node [shape = rectangle fontname=\"Arial\" fontsize=\"10\"]" <<endl;
+                f<<"node [shape = ellipse fontname=\"Arial\" fontsize=\"10\"]" <<endl;
                 f<<"graph [nodesep = 0.5]" <<endl;
                 f<<"label = < <font color='blue'> <font point-size='20'> "<<titulo<<" </font></font>>;"<<endl;
                 f<<"labelloc = \"t\";"<<endl;
@@ -106,9 +184,9 @@ void ArbolAVL::ReporRecurAVl(nodoAVL* n){
             }
             ReporRecurAVl(n->Izq);
             if(n->disponibilidad==true){
-                cccaadenad+=" N"+n->ID+" [label=\" "+n->ID+" \n"+n->nombre+" \n"+n->descripcion+"\", color=green3, fontcolor=green3]; \n";
+                cccaadenad+=" N"+n->ID+" [label=\" ID: "+n->ID+" \nNombre: "+n->nombre+" \nDescripcion: "+n->descripcion+" \n"+to_string(n->fe)+"\", color=green3, fontcolor=green3]; \n";
             }else{
-                cccaadenad+=" N"+n->ID+" [label=\" "+n->ID+" \n"+n->nombre+" \n"+n->descripcion+"\", color=deeppink2, fontcolor=deeppink2]; \n";
+                cccaadenad+=" N"+n->ID+" [label=\" ID: "+n->ID+" \nNombre: "+n->nombre+" \nDescripcion: "+n->descripcion+" \n"+to_string(n->fe)+"\", color=deeppink2, fontcolor=deeppink2]; \n";
             }
 
             if(n->Izq!=nullptr){//crea apuntador a nodo izquierdo

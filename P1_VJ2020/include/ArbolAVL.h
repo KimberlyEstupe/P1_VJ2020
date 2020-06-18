@@ -40,13 +40,14 @@ class ArbolAVL
     protected:
 
     private:
+        enum {IZQUIERDO, DERECHO};
         nodoAVL* Raiz=nullptr;
-
-        nodoAVL* SimpleIzquierda(nodoAVL* hoja);
-        nodoAVL* SimpleDerecha(nodoAVL* hoja);
-        nodoAVL* DobleIzquierda(nodoAVL* hoja);
-        nodoAVL* DobleDerecha(nodoAVL* hoja);
+        void SimpleIzquierda(nodoAVL* hoja);
+        void SimpleDerecha(nodoAVL* hoja);
+        void DobleIzquierda(nodoAVL* hoja);
+        void DobleDerecha(nodoAVL* hoja);
         nodoAVL* BuscarR(string id,nodoAVL* hoja);
+        void Equilibrar(nodoAVL *nodo, int rama, bool nuevo);
         void ReporRecurAVl(nodoAVL* hoja);
 };
 

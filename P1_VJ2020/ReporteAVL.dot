@@ -1,0 +1,36 @@
+digraph G {
+rankdir = Lista;
+node [shape = ellipse fontname="Arial" fontsize="10"]
+graph [nodesep = 0.5]
+label = < <font color='blue'> <font point-size='20'> Arbol </font></font>>;
+labelloc = "t";
+Nusuario -> NLOOS5[color=white]; 
+ NGOOS5 -> NFOOS5;
+ NGOOS5 -> MGOOS5[color=white]; 
+ NGOOS5 -> NKOOS5;
+ NLOOS5 -> NGOOS5;
+ NLOOS5 -> MLOOS5[color=white]; 
+ NLOOS5 -> DLOOS5[color=white]; 
+
+Nusuario [label=" USUARIO"]; 
+ NFOOS5 [label=" ID: FOOS5 
+Nombre: dddd 
+Descripcion: ddd 
+0", color=green3, fontcolor=green3]; 
+ NGOOS5 [label=" ID: GOOS5 
+Nombre: dddd 
+Descripcion: ddd 
+0", color=green3, fontcolor=green3]; 
+ MGOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NKOOS5 [label=" ID: KOOS5 
+Nombre: dddd 
+Descripcion: ddd 
+0", color=green3, fontcolor=green3]; 
+ NLOOS5 [label=" ID: LOOS5 
+Nombre: dddd 
+Descripcion: ddd 
+-2", color=green3, fontcolor=green3]; 
+ MLOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ DLOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+
+}

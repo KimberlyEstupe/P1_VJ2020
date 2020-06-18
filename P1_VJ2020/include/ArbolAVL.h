@@ -24,6 +24,14 @@ private:
         Der=nullptr;
     }
     friend class ArbolAVL;
+    friend class NodoMM;
+};
+
+class NDatos{
+    string empleado;
+    string empresa;
+    string departamento;
+
 };
 
 class ArbolAVL

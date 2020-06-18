@@ -23,11 +23,13 @@ void Menus::pruebasCodigo(){
     LCD.mostrar();
     LCD.OrdenarDes();*/
 
-
-    AVL.Insertar("LOOS5","dddd","ddd");
-    AVL.Insertar("FOOS5","dddd","ddd");
-    AVL.Insertar("GOOS5","dddd","ddd");
     AVL.Insertar("KOOS5","dddd","ddd");
+    AVL.Insertar("FOOS5","dddd","ddd");
+    AVL.Insertar("WOOS5","dddd","ddd");
+    AVL.Insertar("EOOS5","dddd","ddd");
+    AVL.Insertar("GOOS5","dddd","ddd");
+    AVL.Insertar("BOOS5","dddd","ddd");
+
 
     AVL.ReporteAVL();
 

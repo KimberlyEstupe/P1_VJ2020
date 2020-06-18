@@ -56,12 +56,12 @@ void ArbolAVL::Equilibrar(nodoAVL* nodo, int rama, bool nuevo){
 
 
        if(nodo->fe == -2) {
-         /*if(nodo->izquierdo->FE == 1) RDD(nodo); // Rotación doble
-         else RSD(nodo); */                       // Rotación simple
+         if(nodo->Izq->fe == 1) DobleDerecha(nodo); // Rotación doble
+         else SimpleDerecha(nodo);                        // Rotación simple
          continuar = false;
       }
       else if(nodo->fe == 2) {
-        if(nodo->Der->fe == -1) cout<<"Doble Iz"<<endl;//RDI(nodo); // Rotación doble
+        if(nodo->Der->fe == -1) DobleIzquierda(nodo); // Rotación doble
          else SimpleIzquierda(nodo);
          continuar = false;
       }
@@ -112,7 +112,7 @@ void ArbolAVL::SimpleDerecha(nodoAVL* hoja){
     }else Raiz=sig;
 
     nodorota->Izq=ultimo;
-    Sig->Der=nodorota;
+    sig->Der=nodorota;
 
     nodorota->Padre=sig;
     if(ultimo) ultimo->Padre=nodorota;
@@ -120,8 +120,18 @@ void ArbolAVL::SimpleDerecha(nodoAVL* hoja){
 
     nodorota->fe=0;
     sig->fe=0;
-
 }
+
+void ArbolAVL::DobleDerecha(nodoAVL* hoja){
+    SimpleIzquierda(hoja->Izq);
+    SimpleDerecha(hoja);
+}
+
+void ArbolAVL::DobleIzquierda(nodoAVL* hoja){
+    SimpleDerecha(hoja->Der);
+    SimpleIzquierda(hoja);
+}
+
 
 //---------------------------METODOS DE BUSQUEDA---------------------
 void ArbolAVL::Busca(string id){

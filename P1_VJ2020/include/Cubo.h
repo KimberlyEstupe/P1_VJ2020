@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "ArbolAVL.h"
 using namespace std;
 
 class NodoMM{
@@ -12,6 +13,7 @@ public:
     string Empleado;//Nomre completo
     string Usuario;//Nombre usuario
     string contra;//contraseña
+
     int X,Y;
     NodoMM* Sig;
     NodoMM* Ant;

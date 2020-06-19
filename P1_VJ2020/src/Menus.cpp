@@ -10,30 +10,36 @@
 #include "ListaCircularDoble.h"
 #include "ArbolAVL.h"
 Cubo cubo;
-ListaCircularDoble LCD;
-ListaCircularDoble LC2;
+ListaCircularDoble Rentactivo;
+ListaCircularDoble catalogo;
 ArbolAVL AVL;
 using namespace std;
 
 void Menus::pruebasCodigo(){
-    /*LCD.InsertarCD(GenerarClave(),"y8","ll","x","sdf","z","66","pp");
-    LCD.InsertarCD(GenerarClave(),"s9","ll","x","sdf","z","66","pp");
-    LCD.InsertarCD(GenerarClave(),"s9","ll","sdf","x","z","66","pp");
-    LCD.InsertarCD(GenerarClave(),"s9","sdf","ll","x","z","66","pp");
-    LCD.mostrar();
-    LCD.OrdenarDes();*/
+    cubo.Insertar("Karla","Karla","Karla","Hiper","Zacapa");
+    cubo.Insertar("Maria","Maria","Maria","Peri","Santa Rosa");
+    cubo.Insertar("Sharon","dd","ss","Peri","Santa Rosa");
+    cubo.Insertar("ppp","pp","pp","Peri","Santa Rosa");
+    cubo.Insertar("ooo","oo","m1","Hiper","Santa Rosa");
+    cubo.Insertar("www","ww1","m1","Peri","Zacapa");
+    cubo.Insertar("mppd","ddfc","pso","Hiper","Zacapa");
+    cubo.Insertar("www","ww1","m1","Dolar","Zacapa");
+    cubo.Insertar("www","ww1","m1","little","Zacapa");
 
-    AVL.Insertar("KOOS5","dddd","ddd");
-    AVL.Insertar("FOOS5","dddd","ddd");
-    AVL.Insertar("WOOS5","dddd","ddd");
-    AVL.Insertar("EOOS5","dddd","ddd");
-    AVL.Insertar("GOOS5","dddd","ddd");
-    AVL.Insertar("BOOS5","dddd","ddd");
+    if(cubo.Busca("Karla","Zacapa","Karla","Hiper")){
+        cubo.activos("IDD","NOMBRE","decrip");
+        cubo.activos("MPSD","NOMBRE","decrip");
+        cubo.activos("SDD","NOMBRE","decrip");
+    }
 
+    if(cubo.Busca("Maria","Santa Rosa","Maria","Peri")){
+        cubo.activos("HDD","NOMBRE","decrip");
+        cubo.activos("KPSD","NOMBRE","decrip");
+        cubo.activos("SYUD","NOMBRE","decrip");
+    }
 
-    AVL.ReporteAVL();
-
-
+    cubo.Reporteusuario("Maria","Santa Rosa","Peri");
+    //inicio();
 
     cout<<endl;
 
@@ -47,7 +53,7 @@ void Menus::MUsuarioIngresado(string n){
     int op=8;
     do{
     string name, des;//Agregar activo
-    string ac,descc;
+    string clave,emp,depa,clave2,tiempo, fecha;
         cout<<"\t \t \t \t*---------* M E N U   U S U A R I O  *---------* \n"<<endl;
         cout<<"Bienvenido "<<n<<"\n"<<endl;
         cout<<" 1. Agregar Activo  \n"<<endl;//
@@ -59,12 +65,17 @@ void Menus::MUsuarioIngresado(string n){
         cout<<" 7. Cerrar Sesion y regresar a Menu principal  \n"<<endl;
         cout<<"Ingrese Opcion:  "<<endl;
         cin>>op;
+        system("CLS");
         switch(op){
             case 1:system("CLS");
                     cout<<"\t \t \t*---------* A G R E G A R   A C T I V O  *---------* \n"<<endl;
                     cout<<"Ingrear Nombre de Activo: "<<endl;
+                    cin>>name;
                     cout<<"Ingrear Descripcion de Activo: "<<endl;
-
+                    cin>>des;
+                    clave=GenerarClave();
+                    catalogo.InsertarCD(Mayusculas(name),clave,n,"x",cubo.departamento(),cubo.empresa(),"x","x",Mayusculas(des));
+                    cubo.activos(clave,Mayusculas(name),Mayusculas(des));
                     system("PAUSE");
                     op=8;
                     system("CLS");
@@ -76,30 +87,46 @@ void Menus::MUsuarioIngresado(string n){
                 break;
 
             case 3: cout<<"\t \t \t*---------* M O D I F I C A R   A C T I V O  *---------* \n"<<endl;
-
+                catalogo.TransVende(n);
                 cout<<"Ingrese activo que desea modificar: ";
                 cin>>name;
                 cout<<"Ingrese descripcion modificar: ";
                 cin>>des;
-                AVL.ModificaDescripcion(Mayusculas(name),des);
+                cubo.ModiTrans(Mayusculas(name),des);
                 op=8;
                 system("CLS");
                 break;
 
             case 4: cout<<"\t \t \t*---------* R E N T A R   A C T I V O  *---------* \n"<<endl;
-                op=8;
+                catalogo.Mcatalogo(n);
                 cout<<"Ingrese el id de activo que desea rentar: ";
                 cin>>name;
-                AVL.RentarAc(Mayusculas(name));
+                cout<<"Ingrese el tiempo a rentar : ";
+                cin>>tiempo;
+                cout<<"Fecha actual( dd/mm/aa ): ";
+                cin>>fecha;
+                des=catalogo.vendedor(Mayusculas(name));
+                if(des!=""){
+                    catalogo.RenCatalogo(Mayusculas(name),n,cubo.empresa(),cubo.departamento());
+                    cubo.RentarActivo(Mayusculas(name),des,catalogo.deparv(),catalogo.empresav());
+                    AVL.RentarAc(Mayusculas(name));
+                    Rentactivo.InsertarCD(GenerarClave(),Mayusculas(name),des,n,cubo.departamento(),cubo.empresa(),fecha,tiempo,"D");
+                }
+
                 system("CLS");
+                op=8;
                 break;
 
             case 5: cout<<"\t \t \t*---------* A C T I V O S   R E N T A D O S *---------* \n"<<endl;
+                catalogo.TransCompra(n);
+                system("PAUSE");
                 op=8;
                 system("CLS");
                 break;
 
             case 6: cout<<"\t \t*---------* M I S   A C T I V O S   R E N T A D O S *---------* \n"<<endl;
+                catalogo.TransVende(n);
+                system("PAUSE");
                 op=8;
                 system("CLS");
                 break;
@@ -122,6 +149,7 @@ void Menus::MUsuarioIngresado(string n){
 void Menus::Admin(){
     system("CLS");
     int op=2;
+    string nombre,usuario,contra,depa,empre;
     do{
         cout<<"\t \t \t \t*---------* M E N U    A D M I N I S T R A D O R  *---------* \n"<<endl;
         cout<<" 1. Registrar Usuario  \n"<<endl;
@@ -135,6 +163,7 @@ void Menus::Admin(){
         cout<<" 9. Regresar a Menu principal \n"<<endl;
         cout<<"Ingrese Opcion:  "<<endl;
         cin>>op;
+        system("CLS");
         switch(op){
             case 1:CrearUsuario();
                     op=10;
@@ -158,12 +187,20 @@ void Menus::Admin(){
                     break;
 
             case 5: cout<<"\t \t \t*---------* REPORTE DE TRANSACCIONES *---------* \n"<<endl;
-                    LCD.ReporteTransacciones();
+                    Rentactivo.ReporteTransacciones();
                     op=10;
                     system("CLS");
                     break;
 
             case 6: cout<<"\t \t \t*---------* REPORTE ACTIVOS DE UN USUARIO *---------* \n"<<endl;
+                    cout<<"\n* Ingrese Usuario:  "<<endl;
+                    cin>>usuario;
+                    cout<<"\n* Ingrese Departamento:  "<<endl;
+                    cin>>depa;
+                    cout<<"\n* Ingrese Empresa:  "<<endl;
+                    cin>>empre;
+                    cubo.Reporteusuario(Mayusculas(usuario),Mayusculas(depa),Mayusculas(empre));
+
                     op=10;
                     system("CLS");
                     break;
@@ -174,7 +211,6 @@ void Menus::Admin(){
                     break;
 
             case 8: OrdenarActivos();
-
                     op=10;
                     system("CLS");
                     break;
@@ -207,16 +243,16 @@ void Menus::OrdenarActivos(){
         cout<<"Ingrese Opcion:  "<<endl;
         cin>>op;
         switch(op){
-            case 1: LCD.OrdenarAs();
+            case 1: Rentactivo.OrdenarAs();
                 cout<<"Transacciones Ordenas Ascendetemente"<<endl;
-                LCD.ReporteTransacciones();
+                Rentactivo.ReporteTransacciones();
                 system("PAUSE");
                 op=3;
                 system("CLS");
                 break;
-            case 2: LCD.OrdenarDes();
+            case 2: Rentactivo.OrdenarDes();
                 cout<<"Transacciones Ordenas Descendentement"<<endl;
-                LCD.ReporteTransacciones();
+                Rentactivo.ReporteTransacciones();
                 system("PAUSE");
                 op=3;
                 system("CLS");
@@ -250,7 +286,7 @@ void Menus::CrearUsuario(){
                     cin>>depa;
                     cout<<"\n* Ingrese Empresa:  "<<endl;
                     cin>>empre;
-                    cubo.Insertar(Mayusculas(depa),Mayusculas(empre),Mayusculas(nombre),Mayusculas(usuario),Mayusculas(contra));
+                    cubo.Insertar(Mayusculas(nombre),Mayusculas(contra),Mayusculas(usuario),Mayusculas(empre),Mayusculas(depa));
 }
 
 void Menus::RentaActivosLogin(){

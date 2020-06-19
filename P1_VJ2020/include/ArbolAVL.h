@@ -25,27 +25,20 @@ private:
     }
     friend class ArbolAVL;
     friend class NodoMM;
+    friend class Cubo;
 };
 
-class NDatos{
-    string empleado;
-    string empresa;
-    string departamento;
-
-};
-
-class ArbolAVL
-{
+class ArbolAVL{
     public:
         ArbolAVL();
-        void Insertar(string id, string name, string descrip);
-        void Busca(string id);
+        void Insertar(string id, string name, string descrip,nodoAVL* raiz);
+        void InsertarRaiz(string id, string name, string descrip);
+        bool Busca(string id);
         void RentarAc(string id);
-        void ModificaDescripcion(string id, string descripcion);
+        void ModificaDescripcion(string id, string descripcion, nodoAVL* raiz);
         void ReporteAVL();
-
-
-    protected:
+        nodoAVL* ReRaiz();
+        string UnUsuario(nodoAVL* hoja,  string usuario);
 
     private:
         enum {IZQUIERDO, DERECHO};
@@ -56,7 +49,8 @@ class ArbolAVL
         void DobleDerecha(nodoAVL* hoja);
         nodoAVL* BuscarR(string id,nodoAVL* hoja);
         void Equilibrar(nodoAVL *nodo, int rama, bool nuevo);
-        void ReporRecurAVl(nodoAVL* hoja);
+        void ReporRecurAVl(nodoAVL* hoja,  string usuario);
+
 };
 
 #endif // ARBOLAVL_H

@@ -2,47 +2,23 @@ digraph G {
 rankdir = Lista;
 node [shape = ellipse fontname="Arial" fontsize="10"]
 graph [nodesep = 0.5]
-label = < <font color='blue'> <font point-size='20'> Arbol </font></font>>;
+label = < <font color='blue'> <font point-size='20'> Reporte Usuario </font></font>>;
 labelloc = "t";
-Nusuario -> NFOOS5[color=white]; 
- NEOOS5 -> NBOOS5;
- NEOOS5 -> MEOOS5[color=white]; 
- NEOOS5 -> DEOOS5[color=white]; 
- NFOOS5 -> NEOOS5;
- NFOOS5 -> MFOOS5[color=white]; 
- NFOOS5 -> NKOOS5;
- NKOOS5 -> NGOOS5;
- NKOOS5 -> MKOOS5[color=white]; 
- NKOOS5 -> NWOOS5;
+Nusuario -> NKPSD[color=white]; 
+ NKPSD -> NHDD;
+ NKPSD -> MKPSD[color=white]; 
+ NKPSD -> NSYUD;
 
-Nusuario [label=" USUARIO"]; 
- NBOOS5 [label=" ID: BOOS5 
-Nombre: dddd 
-Descripcion: ddd 
-0", color=green3, fontcolor=green3]; 
- NEOOS5 [label=" ID: EOOS5 
-Nombre: dddd 
-Descripcion: ddd 
--1", color=green3, fontcolor=green3]; 
- MEOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- DEOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NFOOS5 [label=" ID: FOOS5 
-Nombre: dddd 
-Descripcion: ddd 
--1", color=green3, fontcolor=green3]; 
- MFOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NGOOS5 [label=" ID: GOOS5 
-Nombre: dddd 
-Descripcion: ddd 
-0", color=green3, fontcolor=green3]; 
- NKOOS5 [label=" ID: KOOS5 
-Nombre: dddd 
-Descripcion: ddd 
-0", color=green3, fontcolor=green3]; 
- MKOOS5 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NWOOS5 [label=" ID: WOOS5 
-Nombre: dddd 
-Descripcion: ddd 
-0", color=green3, fontcolor=green3]; 
+Nusuario [label=" Maria"]; 
+ NHDD [label=" ID: HDD 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ NKPSD [label=" ID: KPSD 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MKPSD [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NSYUD [label=" ID: SYUD 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
 
 }

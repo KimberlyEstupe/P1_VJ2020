@@ -8,14 +8,13 @@
 #include <cstring>
 
 using namespace std;
-ListaCircularDoble::ListaCircularDoble()
-{
+ListaCircularDoble::ListaCircularDoble(){
     cabeza=nullptr;
 }
 
-void ListaCircularDoble::InsertarCD(string IdTran, string IdAc, string vende, string compra, string depar, string empres, string fec, string time){
+void ListaCircularDoble::InsertarCD(string IdTran, string IdAc, string vende, string compra, string depar, string empres, string fec, string time, string des){
     setlocale(LC_CTYPE,"Spanish");
-    NodoCD* nuevo=new NodoCD(IdTran,IdAc,vende, compra, depar,empres,fec,time);
+    NodoCD* nuevo=new NodoCD(IdTran,IdAc,vende, compra, depar,empres,fec,time, des);
     if(cabeza==nullptr){
         cabeza=nuevo;
         cabeza->sig=cabeza;
@@ -39,17 +38,109 @@ void ListaCircularDoble::InsertarCD(string IdTran, string IdAc, string vende, st
     }
 
 }
-
+//---------------------------------------------Metodo mostrar-----------------------
 void ListaCircularDoble::mostrar(){
     setlocale(LC_CTYPE,"Spanish");
    NodoCD *aux;
    aux = cabeza;
    while(aux->sig!=cabeza) {
-      cout << aux->IdTransaccion << "-> ";
+      cout <<"ID"<< aux->IdTransaccion << " Nombre: ";
       aux = aux->sig;
    }
    cout << aux->IdTransaccion <<endl;
 }
+
+void ListaCircularDoble::TransCompra(string usuario){
+    setlocale(LC_CTYPE,"Spanish");
+    NodoCD *aux;
+    aux = cabeza;
+    if(cabeza->sig!=cabeza && cabeza!=nullptr){
+        do{
+            if(aux->Comprador==usuario){
+                cout<<"ID: "<<aux->IdActivo<<" Nombre: "<<aux->IdTransaccion<<endl;
+            }
+            aux=aux->sig;
+        }while(aux!=cabeza);
+    }
+
+}
+
+void ListaCircularDoble::TransVende(string usuario){
+    setlocale(LC_CTYPE,"Spanish");
+    NodoCD *aux;
+    aux = cabeza;
+    if(cabeza->sig!=cabeza && cabeza!=nullptr){
+        do{
+            if(aux->Vendedor==usuario && aux->estadorenta==false){
+                cout<<"ID: "<<aux->IdActivo<<"; Nombre: "<<aux->IdTransaccion<<endl;
+            }
+            aux=aux->sig;
+        }while(aux!=cabeza);
+    }
+}
+
+void ListaCircularDoble::Mcatalogo(string usuario){
+    setlocale(LC_CTYPE,"Spanish");
+    NodoCD *aux;
+    aux = cabeza;
+    if(cabeza!=nullptr){
+        do{
+            if(aux->Vendedor!=usuario && aux->estadorenta==true){
+                cout<<"ID: "<<aux->IdActivo<<"; Nombre: "<<aux->IdTransaccion<<" Descripcion: "<<aux->descripcion<<endl;
+            }
+            aux=aux->sig;
+        }while(aux!=cabeza);
+    }
+}
+
+void ListaCircularDoble::RenCatalogo(string idac, string compra,string empresa,string depart){
+    NodoCD* buscado=Buscar(idac);
+    if(buscado!=nullptr){
+            buscado->Comprador=compra;
+            buscado->estadorenta=false;
+            buscado->Fecha=empresa;
+            buscado->TiempoRenta=depart;
+    }
+}
+
+string ListaCircularDoble::vendedor(string id){
+    NodoCD *aux;
+    aux = cabeza;
+    if(cabeza!=nullptr){
+        do{
+            if(aux->IdActivo==id){
+                Nbuscado=aux;
+                return aux->Vendedor;
+            }
+            aux=aux->sig;
+        }while(aux!=cabeza);
+    }
+    return "";
+}
+
+string ListaCircularDoble::empresav(){
+    return Nbuscado->Fecha;
+}
+
+string ListaCircularDoble::deparv(){
+    return Nbuscado->TiempoRenta;
+}
+
+NodoCD* ListaCircularDoble::Buscar(string ID){
+    NodoCD *aux;
+    aux = cabeza;
+    if(cabeza->sig!=cabeza && cabeza!=nullptr){
+        do{
+            if(aux->IdActivo==ID){
+                return aux;
+            }
+            aux=aux->sig;
+        }while(aux!=cabeza);
+    }
+
+    return NULL;
+}
+
 
 void ListaCircularDoble::OrdenarAs(){
     mostrar();
@@ -86,8 +177,6 @@ void ListaCircularDoble::OrdenarDes(){
                     NodoCD* siguiente;
                     NodoCD* anterior;
                     NodoCD* nuevaCabeza;
-
-                    //do{
                         primero=cabeza;
                         segundo=cabeza->sig;
                         siguiente=segundo->sig;

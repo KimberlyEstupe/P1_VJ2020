@@ -5,19 +5,20 @@
 #include <clocale>
 #include <cstring>
 #include <sstream>
-
+#include "ArbolAVL.h"
 using namespace std;
 
 
 Cubo::Cubo(){
-    Cabeza=new NodoMM(0,0,"GUATE","USAC","ADMIN","ADMIN","ADMIN");
+    Cabeza=new NodoMM(0,0,"GUATE","USAC","ADMIN","ADMIN","ADMIN",NULL);
 }
 
 //======================================================================== * METODOS DE INSERTAR *===============================================================
 void Cubo::Insertar(string persona, string con, string usario, string Empre, string Depa){
     NodoMM* NodoDepa = InsertX(Depa);
     NodoMM* NodoEmpre = InsertY(Empre);
-    NodoMM* newNodo=new NodoMM(NodoDepa->X,NodoEmpre->Y,Depa,Empre,persona,usario,con);
+    nodoAVL* navl=nullptr;
+    NodoMM* newNodo=new NodoMM(NodoDepa->X,NodoEmpre->Y,Depa,Empre,persona,usario,con,navl);
     InsertNodY(newNodo, NodoDepa, NodoEmpre);
 }
 
@@ -28,7 +29,7 @@ NodoMM* Cubo::InsertX(string Depa){
                 aux=aux->Der;
         }
         if(aux->Der==nullptr && aux->Departamento!=Depa){
-            NodoMM* nuevo=new NodoMM(aux->X+1,0,Depa,"","","","");
+            NodoMM* nuevo=new NodoMM(aux->X+1,0,Depa,"","","","",NULL);
             aux->Der=nuevo;
             nuevo->Izq=aux;
             return nuevo;
@@ -43,7 +44,7 @@ NodoMM* Cubo::InsertY(string Empre){
                 aux=aux->Abajo;
         }
         if(aux->Abajo==nullptr && aux->Empresa!=Empre){
-            NodoMM* nuevo=new NodoMM(0,aux->Y+1,"",Empre,"","","");
+            NodoMM* nuevo=new NodoMM(0,aux->Y+1,"",Empre,"","","",NULL);
             aux->Abajo=nuevo;
             nuevo->Arriba=aux;
             return nuevo;
@@ -77,7 +78,6 @@ void Cubo::InsertNodY(NodoMM* nuevo,NodoMM* NodoX, NodoMM* NodoY){
             }
         InsertNodX(nuevo,NodoX);
     }
-
 }
 
 void Cubo::InsertNodX(NodoMM* nuevo, NodoMM* NodoX){
@@ -86,7 +86,6 @@ void Cubo::InsertNodX(NodoMM* nuevo, NodoMM* NodoX){
     while(aux->Abajo!=nullptr && aux->Abajo->Y <= nuevo->Y){
         aux=aux->Abajo;
     }
-
     if(aux->Abajo==nullptr){
             aux->Abajo=nuevo;
             nuevo->Arriba=aux;
@@ -99,9 +98,34 @@ void Cubo::InsertNodX(NodoMM* nuevo, NodoMM* NodoX){
     }
 }
 
+void Cubo::activos(string id, string nombre, string desripcion){
+    ArbolAVL avl;
+    if(NodBusqueda->LActivos==nullptr && NodBusqueda->LActivos==NULL){
+        NodBusqueda->LActivos=new nodoAVL(id,nombre,desripcion);
+    }else{
+        avl.Insertar(id,nombre,desripcion,NodBusqueda->LActivos);
+        NodBusqueda->LActivos=avl.ReRaiz();
+    }
+
+
+}
+
+void Cubo::ModiTrans(string nombre, string desripcion){
+    ArbolAVL avl;
+    avl.ModificaDescripcion(nombre,desripcion,NodBusqueda->LActivos);
+}
+
 //======================================================================== * METODOS DE BUSQUEDA *===============================================================
 string Cubo::usuario(){
-    return NodBusqueda->Empleado+"("+NodBusqueda->Usuario+")";
+    return NodBusqueda->Usuario;
+}
+
+string Cubo::empresa(){
+    return NodBusqueda->Empresa;
+}
+
+string Cubo::departamento(){
+    return NodBusqueda->Departamento;
 }
 
 bool Cubo::BCABEZA(string usu, string depa, string contr, string empre){
@@ -138,7 +162,77 @@ bool Cubo::Busca(string usu, string depa, string contr, string empre){
     }return false;
 }
 
+NodoMM* Cubo::Busca2(string usu, string dep, string empre){
+    if(Cabeza->Der!=nullptr){
+        NodBusqueda=NULL;
+        NodoMM* aux=Cabeza->Abajo;
+        NodoMM* aux2=Cabeza->Abajo->Der;
+        NodoMM* aux3=Cabeza->Abajo->Der;
+
+        while(aux!=nullptr){
+            while(aux2!=nullptr){
+                    while(aux3!=nullptr){
+                        //if(aux3->Usuario==usu){
+                        if(aux3->Usuario==usu && aux3->Departamento==dep && aux3->Empresa==empre){
+                            NodBusqueda=aux3;
+                            return aux3;
+                        }
+                        aux3=aux3->Sig;
+                    }
+                aux2=aux2->Der;
+                aux3=aux2;
+            }
+            aux=aux->Abajo;
+            aux2=aux;
+        }
+
+    }return NULL;
+}
+
+
+void Cubo::RentarActivo(string id, string usu, string depa, string empre){
+    ArbolAVL avl;
+    if(Busca2(usu,depa,empre)){
+        avl.RentarAc(id);
+    }
+}
+
 //======================================================================== * REPORTE *===============================================================
+void Cubo::ReporteAVL(){
+    ArbolAVL avl;
+    string texto=avl.UnUsuario(NodBusqueda->LActivos,NodBusqueda->Usuario);
+    RRAVL(texto,"Reporte Usuario");
+}
+
+void Cubo::Reporteusuario(string usu, string depa, string empre){
+    ArbolAVL avl;
+    if(Busca2(usu,depa,empre)){
+        string texto=avl.UnUsuario(NodBusqueda->LActivos,NodBusqueda->Usuario);
+        RRAVL(texto,"Reporte Usuario");
+    }
+}
+
+void Cubo::RRAVL(string texto, string titulo){
+    setlocale(LC_CTYPE,"Spanish");
+    try{
+        ofstream f;
+        f.open("ReporteAVL.dot");
+        f<<"digraph G {" << endl;
+                f<<"rankdir = Lista;" <<endl;
+                f<<"node [shape = ellipse fontname=\"Arial\" fontsize=\"10\"]" <<endl;
+                f<<"graph [nodesep = 0.5]" <<endl;
+                f<<"label = < <font color='blue'> <font point-size='20'> "<<titulo<<" </font></font>>;"<<endl;
+                f<<"labelloc = \"t\";"<<endl;
+                f<<texto;
+                f<<"}"<<endl;
+        f.close();
+        system("dot -Tpng ReporteAVL.dot -o ReporteAVL.png");//Convierte el dot en imagen
+        system("ReporteAVL.png");//Abre la imagen
+    }catch(string ios){
+        cout<<"No se pudo generar"<<endl;
+    }
+}
+
 void Cubo::ReposrteMM(){
     setlocale(LC_CTYPE,"Spanish");
     try{
@@ -160,8 +254,7 @@ void Cubo::ReposrteMM(){
                     f<<"  {rank=same "<<endl;
                     f<<"     NodoX"<<aux->X<<"  [label= \""<<aux->Empleado<<","<<aux->Usuario <<"\" , group="<<aux->X<<"]"<<endl;
                     while(aux->Der!=nullptr){
-                        f<<"     NodoX"<<aux->X<<" ->  NodoX"<<aux->Der->X<<endl;
-                        f<<"     NodoX"<<aux->Der->X<<" ->  NodoX"<<aux->X<<endl;
+                        f<<"     NodoX"<<aux->X<<" ->  NodoX"<<aux->Der->X<<"[dir=both]"<<endl;
                         aux=aux->Der;
                         f<<"     NodoX"<<aux->X<<"  [label= \""<< aux->Departamento <<"\" , group="<<aux->X<<"]"<<endl;                  // }
                     }
@@ -170,13 +263,11 @@ void Cubo::ReposrteMM(){
 
                 //Grafica Ejer Y
                 aux = Cabeza;
-                f<<"   NodoX"<<aux->Y<<" ->  NodoY"<<aux->Abajo->Y<<endl;
-                f<<"   NodoY"<<aux->Abajo->Y<<" ->  NodoX"<<aux->Y<<endl;
+                f<<"   NodoX"<<aux->Y<<" ->  NodoY"<<aux->Abajo->Y<<"[dir=both]"<<endl;
                 aux=aux->Abajo;
                 f<<"   NodoY"<<aux->Y<<"  [label= \""<< aux->Empresa<<"\" , group=0]"<<endl;
                 while(aux->Abajo!=nullptr){
-                        f<<"   NodoY"<<aux->Y<<" ->  NodoY"<<aux->Abajo->Y<<endl;
-                        f<<"   NodoY"<<aux->Abajo->Y<<" ->  NodoY"<<aux->Y<<endl;
+                        f<<"   NodoY"<<aux->Y<<" ->  NodoY"<<aux->Abajo->Y<<"[dir=both]"<<endl;
                         aux=aux->Abajo;
                         f<<"   NodoY"<<aux->Y<<"  [label= \""<< aux->Empresa<<"\" , group= 0]"<<endl;                  // }
                 }
@@ -189,8 +280,7 @@ void Cubo::ReposrteMM(){
                    while(aux!=nullptr){
                        aux2=aux->Der;
                         f<<"  {rank=same "<<endl;
-                       f<<"     NodoY"<<aux->Y<<" ->  Nodo"<<aux2->X<<aux2->Y<<" [color=blue3]"<<endl;
-                       f<<"      Nodo"<<aux2->X<<aux2->Y<<" ->  NodoY"<<aux->Y<<" [color=blue3]"<<endl;
+                       f<<"     NodoY"<<aux->Y<<" ->  Nodo"<<aux2->X<<aux2->Y<<" [color=blue3][dir=both]"<<endl;
 
 /* *****************************************************NODOS Z*******************************************************************************************************/
                                         NodoMM *aux3 = aux2;
@@ -205,8 +295,7 @@ void Cubo::ReposrteMM(){
 
 
                            while(aux2->Der!=nullptr){
-                                    f<<"     Nodo"<<aux2->X<<aux2->Y<<" ->  Nodo"<<aux2->Der->X<<aux2->Y<<" [color=blue3]"<<endl;
-                                    f<<"     Nodo"<<aux2->Der->X<<aux2->Y<<" ->  Nodo"<<aux2->X<<aux2->Y<<" [color=blue3]"<<endl;
+                                    f<<"     Nodo"<<aux2->X<<aux2->Y<<" ->  Nodo"<<aux2->Der->X<<aux2->Y<<" [color=blue3][dir=both]"<<endl;
                                     aux2=aux2->Der;
 
 /* ****************************************************NODOS Z********************************************************************************************************/
@@ -232,11 +321,9 @@ void Cubo::ReposrteMM(){
                 if(aux->Der!=nullptr){
                     while(aux!=nullptr){
                         aux2=aux->Abajo;
-                        f<<"   NodoX"<<aux->X<<" ->  Nodo"<<aux2->X<<aux2->Y<<" [color=darkslategrey]"<<endl;
-                        f<<"   Nodo"<<aux2->X<<aux2->Y<<" ->  NodoX"<<aux->X<<" [color=darkslategrey]"<<endl;
+                        f<<"   NodoX"<<aux->X<<" ->  Nodo"<<aux2->X<<aux2->Y<<" [color=darkslategrey][dir=both]"<<endl;
                         while(aux2->Abajo!=nullptr){
-                                    f<<"   Nodo"<<aux2->X<<aux2->Y<<" ->  Nodo"<<aux2->Abajo->X<<aux2->Abajo->Y<<" [color=darkslategrey]"<<endl;
-                                    f<<"   Nodo"<<aux2->Abajo->X<<aux2->Abajo->Y<<" ->  Nodo"<<aux2->X<<aux2->Y<<" [color=darkslategrey]"<<endl;
+                                    f<<"   Nodo"<<aux2->X<<aux2->Y<<" ->  Nodo"<<aux2->Abajo->X<<aux2->Abajo->Y<<" [color=darkslategrey][dir=both]"<<endl;
                                     aux2=aux2->Abajo;                 // }
                         }
                         aux=aux->Der;

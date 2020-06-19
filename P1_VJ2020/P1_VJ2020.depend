@@ -49,37 +49,26 @@
 	<sstream>
 	<string>
 
-1592107888 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\main.cpp
+1592517564 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\main.cpp
 	<iostream>
 	<stdio.h>
 	<cstring>
 	"Menus.h"
 
-1592107888 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\menus.h
+1592501787 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\menus.h
 	"Cubo.h"
 	<iostream>
 	<sstream>
 	<string>
 
-1592461976 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\cubo.h
+1592537392 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\cubo.h
 	<iostream>
 	<sstream>
 	<string>
 	"ArbolAVL.h"
 
-1592461674 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\arbolavl.cpp
+1592534533 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\arbolavl.cpp
 	"ArbolAVL.h"
-	<stdlib.h>
-	<fstream>
-	<iostream>
-	<clocale>
-	<cstring>
-	<sstream>
-
-1592462004 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\arbolavl.h
-	<string>
-
-1592107888 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\cubo.cpp
 	"Cubo.h"
 	<stdlib.h>
 	<fstream>
@@ -88,7 +77,20 @@
 	<cstring>
 	<sstream>
 
-1592349944 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\listacirculardoble.cpp
+1592536263 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\arbolavl.h
+	<string>
+
+1592537775 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\cubo.cpp
+	"Cubo.h"
+	<stdlib.h>
+	<fstream>
+	<iostream>
+	<clocale>
+	<cstring>
+	<sstream>
+	"ArbolAVL.h"
+
+1592535525 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\listacirculardoble.cpp
 	"ListaCircularDoble.h"
 	<stdlib.h>
 	<fstream>
@@ -98,12 +100,12 @@
 	<string>
 	<cstring>
 
-1592262659 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\listacirculardoble.h
+1592535246 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\listacirculardoble.h
 	<iostream>
 	<sstream>
 	<string>
 
-1592461720 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\menus.cpp
+1592537566 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\menus.cpp
 	"Menus.h"
 	<iostream>
 	<stdio.h>

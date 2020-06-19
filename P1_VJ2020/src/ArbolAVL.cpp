@@ -1,4 +1,5 @@
 #include "ArbolAVL.h"
+#include "Cubo.h"
 #include <stdlib.h>
 #include <fstream>
 #include <iostream>
@@ -10,13 +11,27 @@ using namespace std;
 //https://www.youtube.com/watch?v=_z4xMj6C2yw
 string cccaadenad2="";
 string cccaadenad="";
+
 ArbolAVL::ArbolAVL(){
     Raiz=nullptr;
 }
 
-void ArbolAVL::Insertar(string id, string nombre, string desripcion){
+
+
+void ArbolAVL::InsertarRaiz(string id, string nombre, string desripcion){
+    if(Raiz==nullptr){
+        Raiz=new nodoAVL(id,nombre,desripcion);
+    }
+}
+
+nodoAVL* ArbolAVL::ReRaiz(){
+    return Raiz;
+}
+
+void ArbolAVL::Insertar(string id, string nombre, string desripcion, nodoAVL* raiz){
     nodoAVL* nuevo= new nodoAVL(id,nombre,desripcion);
     nodoAVL* auxP=nullptr;
+    Raiz=raiz;
     if(Raiz==nullptr){
         Raiz=nuevo;
     }else{
@@ -47,6 +62,7 @@ void ArbolAVL::Insertar(string id, string nombre, string desripcion){
 void ArbolAVL::Equilibrar(nodoAVL* nodo, int rama, bool nuevo){
     bool continuar = true;
     while(continuar && nodo){
+
         if(nuevo)
              if(rama == IZQUIERDO) nodo->fe--;
              else                  nodo->fe++;
@@ -54,26 +70,23 @@ void ArbolAVL::Equilibrar(nodoAVL* nodo, int rama, bool nuevo){
              if(rama == IZQUIERDO) nodo->fe++;
              else                  nodo->fe--;
 
-
+        if(nodo->fe==0) continuar=false;
        if(nodo->fe == -2) {
-         if(nodo->Izq->fe == 1) DobleDerecha(nodo); // Rotación doble
-         else SimpleDerecha(nodo);                        // Rotación simple
+         if(nodo->Izq->fe == 1) DobleDerecha(nodo);
+         else SimpleDerecha(nodo);
          continuar = false;
       }
       else if(nodo->fe == 2) {
-        if(nodo->Der->fe == -1) DobleIzquierda(nodo); // Rotación doble
+        if(nodo->Der->fe == -1) DobleIzquierda(nodo);
          else SimpleIzquierda(nodo);
          continuar = false;
       }
-
 
       if(nodo->Padre){
         if(nodo->Padre->Der == nodo) rama = DERECHO;
         else rama = IZQUIERDO;
       }
-
         nodo = nodo->Padre;
-
     }
 }
 
@@ -134,16 +147,18 @@ void ArbolAVL::DobleIzquierda(nodoAVL* hoja){
 
 
 //---------------------------METODOS DE BUSQUEDA---------------------
-void ArbolAVL::Busca(string id){
+bool ArbolAVL::Busca(string id){
     nodoAVL* buscado=BuscarR(id, Raiz);
-    cout<<buscado->nombre;
+    if(buscado!=nullptr) return true;
+    return false;
 }
 
 nodoAVL* ArbolAVL::BuscarR(string id ,nodoAVL* hoja){
-    if (Raiz==nullptr) return NULL;
+    if (Raiz==nullptr) return nullptr;
     else if(hoja->ID==id) return hoja;
     else if (hoja->ID<id) return BuscarR(id,hoja->Der);
     else if (hoja->ID>id) return BuscarR(id,hoja->Izq);
+    else if (hoja==nullptr) return nullptr;
 }
 //---------------------------METODOS DE ACTIVO RENTADO---------------------
 void ArbolAVL::RentarAc(string id){
@@ -153,7 +168,8 @@ void ArbolAVL::RentarAc(string id){
 }
 
 //---------------------------METODOS MODIFICAR DESCRIPCION---------------------
-void ArbolAVL::ModificaDescripcion(string id, string des){
+void ArbolAVL::ModificaDescripcion(string id, string des,nodoAVL* raiz){
+    Raiz=raiz;
     nodoAVL* buscado=BuscarR(id, Raiz);
      if(buscado!=nullptr) buscado->descripcion=des;
     else cout<<"Este nodo no existe";
@@ -165,7 +181,7 @@ void ArbolAVL::ReporteAVL(){
     setlocale(LC_CTYPE,"Spanish");
     cccaadenad2="";
     cccaadenad="";
-    ReporRecurAVl(Raiz);
+    ReporRecurAVl(Raiz, "Nombre Usuario");
     string texto=cccaadenad2+"\n"+cccaadenad+"\n}";
     string titulo="Arbol";
     try{
@@ -186,17 +202,24 @@ void ArbolAVL::ReporteAVL(){
     }
 }
 
-void ArbolAVL::ReporRecurAVl(nodoAVL* n){
+string ArbolAVL::UnUsuario(nodoAVL* n, string usuario){
+    cccaadenad2="";
+    cccaadenad="";
+    ReporRecurAVl(n, usuario);
+    return cccaadenad2+"\n"+cccaadenad+"\n";
+}
+
+void ArbolAVL::ReporRecurAVl(nodoAVL* n, string usuario){
     if(n!=nullptr){
             if(cccaadenad==""){
-                cccaadenad="Nusuario [label=\" USUARIO\"]; \n";
+                cccaadenad="Nusuario [label=\" "+ usuario+"\"]; \n";
                 cccaadenad2="Nusuario -> N"+n->ID+"[color=white]; \n";
             }
-            ReporRecurAVl(n->Izq);
+            ReporRecurAVl(n->Izq,"");
             if(n->disponibilidad==true){
-                cccaadenad+=" N"+n->ID+" [label=\" ID: "+n->ID+" \nNombre: "+n->nombre+" \nDescripcion: "+n->descripcion+" \n"+to_string(n->fe)+"\", color=green3, fontcolor=green3]; \n";
+                cccaadenad+=" N"+n->ID+" [label=\" ID: "+n->ID+" \nNombre: "+n->nombre+" \nDescripcion: "+n->descripcion+"\", color=green3, fontcolor=green3]; \n";
             }else{
-                cccaadenad+=" N"+n->ID+" [label=\" ID: "+n->ID+" \nNombre: "+n->nombre+" \nDescripcion: "+n->descripcion+" \n"+to_string(n->fe)+"\", color=deeppink2, fontcolor=deeppink2]; \n";
+                cccaadenad+=" N"+n->ID+" [label=\" ID: "+n->ID+" \nNombre: "+n->nombre+" \nDescripcion: "+n->descripcion+"\", color=deeppink2, fontcolor=deeppink2]; \n";
             }
 
             if(n->Izq!=nullptr){//crea apuntador a nodo izquierdo
@@ -217,6 +240,6 @@ void ArbolAVL::ReporRecurAVl(nodoAVL* n){
                 cccaadenad2+=" N"+n->ID+" -> D"+n->ID+"[color=white]; \n";
                 cccaadenad+=" D"+n->ID+" [label=\" Invis\", color=white, bgcolor=white, fontcolor=white]; \n";
             }
-            ReporRecurAVl(n->Der);
+            ReporRecurAVl(n->Der,"");
     }
 }

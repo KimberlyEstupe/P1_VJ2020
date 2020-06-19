@@ -161,7 +161,8 @@ nodoAVL* ArbolAVL::BuscarR(string id ,nodoAVL* hoja){
     else if (hoja==nullptr) return nullptr;
 }
 //---------------------------METODOS DE ACTIVO RENTADO---------------------
-void ArbolAVL::RentarAc(string id){
+void ArbolAVL::RentarAc(string id,nodoAVL* raiz ){
+    Raiz=raiz;
     nodoAVL* buscado=BuscarR(id, Raiz);
     if(buscado!=nullptr) buscado->disponibilidad=false;
     else cout<<"Este nodo no existe";
@@ -172,7 +173,7 @@ void ArbolAVL::ModificaDescripcion(string id, string des,nodoAVL* raiz){
     Raiz=raiz;
     nodoAVL* buscado=BuscarR(id, Raiz);
      if(buscado!=nullptr) buscado->descripcion=des;
-    else cout<<"Este nodo no existe";
+    else cout<<"Este nodo no existe"<<endl;
 }
 
 
@@ -212,8 +213,8 @@ string ArbolAVL::UnUsuario(nodoAVL* n, string usuario){
 void ArbolAVL::ReporRecurAVl(nodoAVL* n, string usuario){
     if(n!=nullptr){
             if(cccaadenad==""){
-                cccaadenad="Nusuario [label=\" "+ usuario+"\"]; \n";
-                cccaadenad2="Nusuario -> N"+n->ID+"[color=white]; \n";
+                cccaadenad="N"+usuario+ "[label=\" Usuario: "+ usuario+"\"]; \n";
+                cccaadenad2="N"+usuario+ " -> N"+n->ID+"[color=white]; \n";
             }
             ReporRecurAVl(n->Izq,"");
             if(n->disponibilidad==true){

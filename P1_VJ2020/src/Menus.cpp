@@ -18,27 +18,46 @@ using namespace std;
 void Menus::pruebasCodigo(){
     cubo.Insertar("Karla","Karla","Karla","Hiper","Zacapa");
     cubo.Insertar("Maria","Maria","Maria","Peri","Santa Rosa");
-    cubo.Insertar("Sharon","dd","ss","Peri","Santa Rosa");
-    cubo.Insertar("ppp","pp","pp","Peri","Santa Rosa");
-    cubo.Insertar("ooo","oo","m1","Hiper","Santa Rosa");
-    cubo.Insertar("www","ww1","m1","Peri","Zacapa");
-    cubo.Insertar("mppd","ddfc","pso","Hiper","Zacapa");
-    cubo.Insertar("www","ww1","m1","Dolar","Zacapa");
-    cubo.Insertar("www","ww1","m1","little","Zacapa");
+    cubo.Insertar("Sharon","Sharon","Sharon","Peri","Santa Rosa");
+    cubo.Insertar("Natalio","Natalio","Natalio","Peri","Santa Rosa");
+    cubo.Insertar("Diego","Diego","Diego","Hiper","Santa Rosa");
+    cubo.Insertar("Jonatan","Jonatan","Jonatan","Peri","Zacapa");
+    cubo.Insertar("Kevin","Kevin","Kevin","Hiper","Zacapa");
+    cubo.Insertar("Lesly","Lesly","Lesly","Dolar","Zacapa");
+    cubo.Insertar("Amaly","Amaly","Amaly","little","Zacapa");
+    cubo.Insertar("Pepe","Pepe","Pepe","Hiper","Guatemala");
 
     if(cubo.Busca("Karla","Zacapa","Karla","Hiper")){
-        cubo.activos("IDD","NOMBRE","decrip");
-        cubo.activos("MPSD","NOMBRE","decrip");
-        cubo.activos("SDD","NOMBRE","decrip");
+        cubo.activos("IOPSDDHT36S8OLS","NOMBRE","decrip");
+        cubo.activos("MP849RINFR4FVSD","NOMBRE","decrip");
+        cubo.activos("SDMC66SMDVN546D","NOMBRE","decrip");
+        cubo.activos("L9MC66SMDKN546D","NOMBRE","decrip");
+        cubo.activos("ADPOX6SMDKN546D","NOMBRE","decrip");
+        cubo.ModiTrans("MP849RINFR4FVSD","Nueva Descripcion");
     }
 
-    if(cubo.Busca("Maria","Santa Rosa","Maria","Peri")){
-        cubo.activos("HDD","NOMBRE","decrip");
-        cubo.activos("KPSD","NOMBRE","decrip");
-        cubo.activos("SYUD","NOMBRE","decrip");
+
+    if(cubo.Busca("Kevin","Zacapa","Kevin","Hiper")){
+        cubo.activos("VHYS6DHT36S8OLS","NOMBRE","decrip");
+        cubo.activos("IOPSLIST36S8OLS","NOMBRE","decrip");
+        cubo.activos("I9PSDDHT36S8OLS","NOMBRE","decrip");
+        cubo.activos("LÑSODDHT36S8OLS","NOMBRE","decrip");
     }
 
-    cubo.Reporteusuario("Maria","Santa Rosa","Peri");
+    if(cubo.Busca("Pepe","Guatemala","Pepe","Hiper")){
+        cubo.activos("DHT36S8OLSSLPO3","NOMBRE","decrip");
+        cubo.activos("ULIST36S8OLSSPZ","NOMBRE","decrip");
+        cubo.activos("JA49FJIEIOVMKFE","NOMBRE","decrip");
+        cubo.activos("ÑOC305SAMJRJR55","NOMBRE","decrip");
+
+        cubo.ModiTrans("ÑOC305SAMJRJR55","Nueva Descripcion");
+    }
+
+
+    cubo.RentarActivo("JA49FJIEIOVMKFE","Pepe","Guatemala","Hiper");
+    cubo.RentarActivo("I9PSDDHT36S8OLS","Kevin","Zacapa","Hiper");
+    inicio();
+    //cubo.ReporteDepartamento("Zacapa");
     //inicio();
 
     cout<<endl;
@@ -109,7 +128,6 @@ void Menus::MUsuarioIngresado(string n){
                 if(des!=""){
                     catalogo.RenCatalogo(Mayusculas(name),n,cubo.empresa(),cubo.departamento());
                     cubo.RentarActivo(Mayusculas(name),des,catalogo.deparv(),catalogo.empresav());
-                    AVL.RentarAc(Mayusculas(name));
                     Rentactivo.InsertarCD(GenerarClave(),Mayusculas(name),des,n,cubo.departamento(),cubo.empresa(),fecha,tiempo,"D");
                 }
 
@@ -177,11 +195,17 @@ void Menus::Admin(){
                     break;
 
             case 3: cout<<"\t \t \t*---------* REPORTE ACTIVOS DISPONIBLES DE UN DEPARTAMENTO *---------* \n"<<endl;
+                    cout<<"Ingrese el departamento ";
+                    cin>>nombre;
+                    cubo.ReporteDepartamento(Mayusculas(nombre));
                     op=10;
                     system("CLS");
                     break;
 
             case 4: cout<<"\t \t \t*---------* REPORTE ACTIVOS DISPONIBLES DE UNA EMPRESA *---------* \n"<<endl;
+                    cout<<"Ingrese la empresa ";
+                    cin>>nombre;
+                    cubo.ReporteEmpresa(Mayusculas(nombre));
                     op=10;
                     system("CLS");
                     break;

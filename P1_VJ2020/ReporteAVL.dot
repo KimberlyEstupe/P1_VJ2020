@@ -2,23 +2,83 @@ digraph G {
 rankdir = Lista;
 node [shape = ellipse fontname="Arial" fontsize="10"]
 graph [nodesep = 0.5]
-label = < <font color='blue'> <font point-size='20'> Reporte Usuario </font></font>>;
+label = < <font color='blue'> <font point-size='20'> Reporte Empresa: Hiper </font></font>>;
 labelloc = "t";
-Nusuario -> NKPSD[color=white]; 
- NKPSD -> NHDD;
- NKPSD -> MKPSD[color=white]; 
- NKPSD -> NSYUD;
+NKarla -> NMP849RINFR4FVSD[color=white]; 
+ NIOPSDDHT36S8OLS -> NADPOX6SMDKN546D;
+ NIOPSDDHT36S8OLS -> MIOPSDDHT36S8OLS[color=white]; 
+ NIOPSDDHT36S8OLS -> NL9MC66SMDKN546D;
+ NMP849RINFR4FVSD -> NIOPSDDHT36S8OLS;
+ NMP849RINFR4FVSD -> MMP849RINFR4FVSD[color=white]; 
+ NMP849RINFR4FVSD -> NSDMC66SMDVN546D;
 
-Nusuario [label=" Maria"]; 
- NHDD [label=" ID: HDD 
+NKarla[label=" Usuario: Karla"]; 
+ NADPOX6SMDKN546D [label=" ID: ADPOX6SMDKN546D 
 Nombre: NOMBRE 
 Descripcion: decrip", color=green3, fontcolor=green3]; 
- NKPSD [label=" ID: KPSD 
+ NIOPSDDHT36S8OLS [label=" ID: IOPSDDHT36S8OLS 
 Nombre: NOMBRE 
 Descripcion: decrip", color=green3, fontcolor=green3]; 
- MKPSD [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NSYUD [label=" ID: SYUD 
+ MIOPSDDHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NL9MC66SMDKN546D [label=" ID: L9MC66SMDKN546D 
 Nombre: NOMBRE 
 Descripcion: decrip", color=green3, fontcolor=green3]; 
+ NMP849RINFR4FVSD [label=" ID: MP849RINFR4FVSD 
+Nombre: NOMBRE 
+Descripcion: Nueva Descripcion", color=green3, fontcolor=green3]; 
+ MMP849RINFR4FVSD [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NSDMC66SMDVN546D [label=" ID: SDMC66SMDVN546D 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+
+NKevin -> NIOPSLIST36S8OLS[color=white]; 
+ NIOPSLIST36S8OLS -> NI9PSDDHT36S8OLS;
+ NIOPSLIST36S8OLS -> MIOPSLIST36S8OLS[color=white]; 
+ NIOPSLIST36S8OLS -> NVHYS6DHT36S8OLS;
+ NVHYS6DHT36S8OLS -> NLÑSODDHT36S8OLS;
+ NVHYS6DHT36S8OLS -> MVHYS6DHT36S8OLS[color=white]; 
+ NVHYS6DHT36S8OLS -> DVHYS6DHT36S8OLS[color=white]; 
+
+NKevin[label=" Usuario: Kevin"]; 
+ NI9PSDDHT36S8OLS [label=" ID: I9PSDDHT36S8OLS 
+Nombre: NOMBRE 
+Descripcion: decrip", color=deeppink2, fontcolor=deeppink2]; 
+ NIOPSLIST36S8OLS [label=" ID: IOPSLIST36S8OLS 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MIOPSLIST36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NLÑSODDHT36S8OLS [label=" ID: LÑSODDHT36S8OLS 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ NVHYS6DHT36S8OLS [label=" ID: VHYS6DHT36S8OLS 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MVHYS6DHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ DVHYS6DHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+
+NPepe -> NJA49FJIEIOVMKFE[color=white]; 
+ NJA49FJIEIOVMKFE -> NDHT36S8OLSSLPO3;
+ NJA49FJIEIOVMKFE -> MJA49FJIEIOVMKFE[color=white]; 
+ NJA49FJIEIOVMKFE -> NULIST36S8OLSSPZ;
+ NULIST36S8OLSSPZ -> IULIST36S8OLSSPZ[color=white]; 
+ NULIST36S8OLSSPZ -> MULIST36S8OLSSPZ[color=white]; 
+ NULIST36S8OLSSPZ -> NÑOC305SAMJRJR55;
+
+NPepe[label=" Usuario: Pepe"]; 
+ NDHT36S8OLSSLPO3 [label=" ID: DHT36S8OLSSLPO3 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ NJA49FJIEIOVMKFE [label=" ID: JA49FJIEIOVMKFE 
+Nombre: NOMBRE 
+Descripcion: decrip", color=deeppink2, fontcolor=deeppink2]; 
+ MJA49FJIEIOVMKFE [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NULIST36S8OLSSPZ [label=" ID: ULIST36S8OLSSPZ 
+Nombre: NOMBRE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ IULIST36S8OLSSPZ [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ MULIST36S8OLSSPZ [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NÑOC305SAMJRJR55 [label=" ID: ÑOC305SAMJRJR55 
+Nombre: NOMBRE 
+Descripcion: Nueva Descripcion", color=green3, fontcolor=green3]; 
 
 }

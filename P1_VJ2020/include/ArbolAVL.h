@@ -34,7 +34,7 @@ class ArbolAVL{
         void Insertar(string id, string name, string descrip,nodoAVL* raiz);
         void InsertarRaiz(string id, string name, string descrip);
         bool Busca(string id);
-        void RentarAc(string id);
+        void RentarAc(string id, nodoAVL* raiz);
         void ModificaDescripcion(string id, string descripcion, nodoAVL* raiz);
         void ReporteAVL();
         nodoAVL* ReRaiz();

@@ -61,13 +61,13 @@
 	<sstream>
 	<string>
 
-1592537392 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\cubo.h
+1592544238 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\cubo.h
 	<iostream>
 	<sstream>
 	<string>
 	"ArbolAVL.h"
 
-1592534533 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\arbolavl.cpp
+1592544036 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\arbolavl.cpp
 	"ArbolAVL.h"
 	"Cubo.h"
 	<stdlib.h>
@@ -77,10 +77,10 @@
 	<cstring>
 	<sstream>
 
-1592536263 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\arbolavl.h
+1592543699 c:\users\kimberlyestupe\desktop\github\p1_vj2020\include\arbolavl.h
 	<string>
 
-1592537775 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\cubo.cpp
+1592543735 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\cubo.cpp
 	"Cubo.h"
 	<stdlib.h>
 	<fstream>
@@ -105,7 +105,7 @@
 	<sstream>
 	<string>
 
-1592537566 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\menus.cpp
+1592544687 source:c:\users\kimberlyestupe\desktop\github\p1_vj2020\src\menus.cpp
 	"Menus.h"
 	<iostream>
 	<stdio.h>

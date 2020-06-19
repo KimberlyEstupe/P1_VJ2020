@@ -172,7 +172,6 @@ NodoMM* Cubo::Busca2(string usu, string dep, string empre){
         while(aux!=nullptr){
             while(aux2!=nullptr){
                     while(aux3!=nullptr){
-                        //if(aux3->Usuario==usu){
                         if(aux3->Usuario==usu && aux3->Departamento==dep && aux3->Empresa==empre){
                             NodBusqueda=aux3;
                             return aux3;
@@ -193,7 +192,7 @@ NodoMM* Cubo::Busca2(string usu, string dep, string empre){
 void Cubo::RentarActivo(string id, string usu, string depa, string empre){
     ArbolAVL avl;
     if(Busca2(usu,depa,empre)){
-        avl.RentarAc(id);
+        avl.RentarAc(id,NodBusqueda->LActivos);
     }
 }
 
@@ -208,7 +207,7 @@ void Cubo::Reporteusuario(string usu, string depa, string empre){
     ArbolAVL avl;
     if(Busca2(usu,depa,empre)){
         string texto=avl.UnUsuario(NodBusqueda->LActivos,NodBusqueda->Usuario);
-        RRAVL(texto,"Reporte Usuario");
+        RRAVL(texto,"Reporte Usuario "+ usu);
     }
 }
 
@@ -230,6 +229,60 @@ void Cubo::RRAVL(string texto, string titulo){
         system("ReporteAVL.png");//Abre la imagen
     }catch(string ios){
         cout<<"No se pudo generar"<<endl;
+    }
+}
+
+void Cubo::ReporteEmpresa(string em){
+    string texto="";
+    ArbolAVL avl;
+    if(Cabeza->Abajo!=nullptr){
+        NodoMM* aux=Cabeza;
+        NodoMM* auxz;
+        while(aux->Abajo!=nullptr && aux->Empresa!=em){
+            aux=aux->Abajo;
+        }
+        if(aux->Empresa==em){
+            aux=aux->Der;
+            do{
+                auxz=aux;
+                do{
+                    if(auxz->LActivos!=nullptr) {
+                        texto+=avl.UnUsuario(auxz->LActivos,auxz->Usuario);
+                    }
+                    auxz=auxz->Sig;
+                }while(auxz!=nullptr);
+
+                aux=aux->Der;
+            }while(aux!=nullptr);
+        }
+        RRAVL(texto,"Reporte Empresa: "+em);
+    }
+}
+
+void Cubo::ReporteDepartamento(string dep){
+    string texto="";
+    ArbolAVL avl;
+    if(Cabeza->Der!=nullptr){
+        NodoMM* aux=Cabeza;
+        NodoMM* auxz;
+        while(aux->Der!=nullptr && aux->Departamento!=dep){
+            aux=aux->Der;
+        }
+        if(aux->Departamento==dep){
+            aux=aux->Abajo;
+            do{
+                auxz=aux;
+                do{
+                    if(auxz->LActivos!=nullptr) {
+                        texto+=avl.UnUsuario(auxz->LActivos,auxz->Usuario);
+                    }
+                    auxz=auxz->Sig;
+                }while(auxz!=nullptr);
+
+                aux=aux->Abajo;
+            }while(aux!=nullptr);
+        }
+        RRAVL(texto,"Reporte Departamento: "+dep);
     }
 }
 

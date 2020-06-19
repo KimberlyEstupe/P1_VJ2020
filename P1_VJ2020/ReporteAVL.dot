@@ -2,7 +2,7 @@ digraph G {
 rankdir = Lista;
 node [shape = ellipse fontname="Arial" fontsize="10"]
 graph [nodesep = 0.5]
-label = < <font color='blue'> <font point-size='20'> Reporte Empresa: Hiper </font></font>>;
+label = < <font color='blue'> <font point-size='20'> Reporte Departamento: Zacapa </font></font>>;
 labelloc = "t";
 NKarla -> NMP849RINFR4FVSD[color=white]; 
  NIOPSDDHT36S8OLS -> NADPOX6SMDKN546D;
@@ -55,30 +55,5 @@ Nombre: NOMBRE
 Descripcion: decrip", color=green3, fontcolor=green3]; 
  MVHYS6DHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
  DVHYS6DHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
-
-NPepe -> NJA49FJIEIOVMKFE[color=white]; 
- NJA49FJIEIOVMKFE -> NDHT36S8OLSSLPO3;
- NJA49FJIEIOVMKFE -> MJA49FJIEIOVMKFE[color=white]; 
- NJA49FJIEIOVMKFE -> NULIST36S8OLSSPZ;
- NULIST36S8OLSSPZ -> IULIST36S8OLSSPZ[color=white]; 
- NULIST36S8OLSSPZ -> MULIST36S8OLSSPZ[color=white]; 
- NULIST36S8OLSSPZ -> NÑOC305SAMJRJR55;
-
-NPepe[label=" Usuario: Pepe"]; 
- NDHT36S8OLSSLPO3 [label=" ID: DHT36S8OLSSLPO3 
-Nombre: NOMBRE 
-Descripcion: decrip", color=green3, fontcolor=green3]; 
- NJA49FJIEIOVMKFE [label=" ID: JA49FJIEIOVMKFE 
-Nombre: NOMBRE 
-Descripcion: decrip", color=deeppink2, fontcolor=deeppink2]; 
- MJA49FJIEIOVMKFE [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NULIST36S8OLSSPZ [label=" ID: ULIST36S8OLSSPZ 
-Nombre: NOMBRE 
-Descripcion: decrip", color=green3, fontcolor=green3]; 
- IULIST36S8OLSSPZ [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- MULIST36S8OLSSPZ [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NÑOC305SAMJRJR55 [label=" ID: ÑOC305SAMJRJR55 
-Nombre: NOMBRE 
-Descripcion: Nueva Descripcion", color=green3, fontcolor=green3]; 
 
 }

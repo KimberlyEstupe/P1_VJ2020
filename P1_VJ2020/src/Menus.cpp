@@ -16,18 +16,18 @@ ArbolAVL AVL;
 using namespace std;
 
 void Menus::pruebasCodigo(){
-    cubo.Insertar("Karla","Karla","Karla","Hiper","Zacapa");
-    cubo.Insertar("Maria","Maria","Maria","Peri","Santa Rosa");
-    cubo.Insertar("Sharon","Sharon","Sharon","Peri","Santa Rosa");
-    cubo.Insertar("Natalio","Natalio","Natalio","Peri","Santa Rosa");
-    cubo.Insertar("Diego","Diego","Diego","Hiper","Santa Rosa");
-    cubo.Insertar("Jonatan","Jonatan","Jonatan","Peri","Zacapa");
-    cubo.Insertar("Kevin","Kevin","Kevin","Hiper","Zacapa");
-    cubo.Insertar("Lesly","Lesly","Lesly","Dolar","Zacapa");
-    cubo.Insertar("Amaly","Amaly","Amaly","little","Zacapa");
-    cubo.Insertar("Pepe","Pepe","Pepe","Hiper","Guatemala");
+    cubo.Insertar("KARLA","KARLA","KARLA","HIPER","ZACAPA");
+    cubo.Insertar("MARIA","MARIA","MARIA","PERI","Santa Rosa");
+    cubo.Insertar("SHARON","SHARON","SHARON","PERI","Santa Rosa");
+    cubo.Insertar("NATALIO","NATALIO","NATALIO","PERI","Santa Rosa");
+    cubo.Insertar("DIEGO","DIEGO","DIEGO","HIPER","Santa Rosa");
+    cubo.Insertar("JONATAN","JONATAN","JONATAN","PERI","ZACAPA");
+    cubo.Insertar("KEVIN","KEVIN","KEVIN","HIPER","ZACAPA");
+    cubo.Insertar("LESLY","LESLY","LESLY","dOLAR","ZACAPA");
+    cubo.Insertar("AMALY","AMALY","AMALY","little","ZACAPA");
+    cubo.Insertar("PEPE","PEPE","PEPE","HIPER","GUATEMALA");
 
-    if(cubo.Busca("Karla","Zacapa","Karla","Hiper")){
+    if(cubo.Busca("KARLA","ZACAPA","KARLA","HIPER")){
         cubo.activos("IOPSDDHT36S8OLS","NOMBRE","decrip");
         cubo.activos("MP849RINFR4FVSD","NOMBRE","decrip");
         cubo.activos("SDMC66SMDVN546D","NOMBRE","decrip");
@@ -37,14 +37,14 @@ void Menus::pruebasCodigo(){
     }
 
 
-    if(cubo.Busca("Kevin","Zacapa","Kevin","Hiper")){
+    if(cubo.Busca("KEVIN","ZACAPA","KEVIN","HIPER")){
         cubo.activos("VHYS6DHT36S8OLS","NOMBRE","decrip");
         cubo.activos("IOPSLIST36S8OLS","NOMBRE","decrip");
         cubo.activos("I9PSDDHT36S8OLS","NOMBRE","decrip");
         cubo.activos("LÑSODDHT36S8OLS","NOMBRE","decrip");
     }
 
-    if(cubo.Busca("Pepe","Guatemala","Pepe","Hiper")){
+    if(cubo.Busca("PEPE","GUATEMALA","PEPE","HIPER")){
         cubo.activos("DHT36S8OLSSLPO3","NOMBRE","decrip");
         cubo.activos("ULIST36S8OLSSPZ","NOMBRE","decrip");
         cubo.activos("JA49FJIEIOVMKFE","NOMBRE","decrip");
@@ -54,11 +54,10 @@ void Menus::pruebasCodigo(){
     }
 
 
-    cubo.RentarActivo("JA49FJIEIOVMKFE","Pepe","Guatemala","Hiper");
-    cubo.RentarActivo("I9PSDDHT36S8OLS","Kevin","Zacapa","Hiper");
+    cubo.RentarActivo("JA49FJIEIOVMKFE","PEPE","GUATEMALA","HIPER");
+    cubo.RentarActivo("I9PSDDHT36S8OLS","KEVIN","ZACAPA","HIPER");
     inicio();
     //cubo.ReporteDepartamento("Zacapa");
-    //inicio();
 
     cout<<endl;
 

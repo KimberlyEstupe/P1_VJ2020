@@ -16,47 +16,82 @@ ArbolAVL AVL;
 using namespace std;
 
 void Menus::pruebasCodigo(){
+    cubo.Insertar("Nombre","Contraseña","Usuario","Empresa","Departamento");
     cubo.Insertar("KARLA","KARLA","KARLA","HIPER","ZACAPA");
-    cubo.Insertar("MARIA","MARIA","MARIA","PERI","Santa Rosa");
-    cubo.Insertar("SHARON","SHARON","SHARON","PERI","Santa Rosa");
-    cubo.Insertar("NATALIO","NATALIO","NATALIO","PERI","Santa Rosa");
-    cubo.Insertar("DIEGO","DIEGO","DIEGO","HIPER","Santa Rosa");
+    cubo.Insertar("MARIA","MARIA","MARIA","PERI","SOLOLA");
+    cubo.Insertar("SHARON","SHARON","SHARON","PERI","SOLOLA");
+    cubo.Insertar("NATALIO","NATALIO","NATALIO","PERI","SOLOLA");
+    cubo.Insertar("DIEGO","DIEGO","DIEGO","HIPER","IZABAL Rosa");
     cubo.Insertar("JONATAN","JONATAN","JONATAN","PERI","ZACAPA");
     cubo.Insertar("KEVIN","KEVIN","KEVIN","HIPER","ZACAPA");
-    cubo.Insertar("LESLY","LESLY","LESLY","dOLAR","ZACAPA");
-    cubo.Insertar("AMALY","AMALY","AMALY","little","ZACAPA");
+    cubo.Insertar("LESLY","LESLY","LESLY","DOLAR","ZACAPA");
+    cubo.Insertar("AMALY","AMALY","AMALY","LITTLE","ZACAPA");
     cubo.Insertar("PEPE","PEPE","PEPE","HIPER","GUATEMALA");
 
     if(cubo.Busca("KARLA","ZACAPA","KARLA","HIPER")){
-        cubo.activos("IOPSDDHT36S8OLS","NOMBRE","decrip");
-        cubo.activos("MP849RINFR4FVSD","NOMBRE","decrip");
-        cubo.activos("SDMC66SMDVN546D","NOMBRE","decrip");
-        cubo.activos("L9MC66SMDKN546D","NOMBRE","decrip");
-        cubo.activos("ADPOX6SMDKN546D","NOMBRE","decrip");
-        cubo.ModiTrans("MP849RINFR4FVSD","Nueva Descripcion");
+        cubo.activos("I7PSD","NOMBRE1","decrip");
+        catalogo.InsertarCD("NOMBRE1","I7PSD","KARLA","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("MP849","NOMBRE2","decrip");
+        catalogo.InsertarCD("NOMBRE2","MP849","KARLA","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("SDMC6","NOMBRE3","decrip");
+        catalogo.InsertarCD("NOMBRE3","SDMC6","KARLA","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("L9MC6","NOMBRE4","decrip");
+        catalogo.InsertarCD("NOMBRE4","L9MC6","KARLA","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("ADP9X","NOMBRE5","decrip");
+        catalogo.InsertarCD("NOMBRE5","ADP9X","KARLA","X","ZACAPA","HIPER","X","X","decrip");
+
+        cubo.ModiTrans("ADP9X","Nueva Descripcion");
     }
 
-
     if(cubo.Busca("KEVIN","ZACAPA","KEVIN","HIPER")){
-        cubo.activos("VHYS6DHT36S8OLS","NOMBRE","decrip");
-        cubo.activos("IOPSLIST36S8OLS","NOMBRE","decrip");
-        cubo.activos("I9PSDDHT36S8OLS","NOMBRE","decrip");
-        cubo.activos("LÑSODDHT36S8OLS","NOMBRE","decrip");
+        cubo.activos("VHYS6","NOMBRE6","decrip");
+        catalogo.InsertarCD("NOMBRE6","VHYS6","KEVIN","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("SLIST","NOMBRE7","decrip");
+        catalogo.InsertarCD("NOMBRE7","SLIST","KEVIN","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("I9PSD","NOMBRE8","decrip");
+        catalogo.InsertarCD("NOMBRE8","I9PSD","KEVIN","X","ZACAPA","HIPER","X","X","decrip");
+        cubo.activos("T36S8","NOMBRE9","decrip");
+        catalogo.InsertarCD("NOMBRE9","T36S8","KEVIN","X","ZACAPA","HIPER","X","X","decrip");
     }
 
     if(cubo.Busca("PEPE","GUATEMALA","PEPE","HIPER")){
-        cubo.activos("DHT36S8OLSSLPO3","NOMBRE","decrip");
-        cubo.activos("ULIST36S8OLSSPZ","NOMBRE","decrip");
-        cubo.activos("JA49FJIEIOVMKFE","NOMBRE","decrip");
-        cubo.activos("ÑOC305SAMJRJR55","NOMBRE","decrip");
-
-        cubo.ModiTrans("ÑOC305SAMJRJR55","Nueva Descripcion");
+        cubo.activos("M36S8","NOMBRE10","decrip");
+        catalogo.InsertarCD("NOMBRE10","M36S8","PEPE","X","GUATEMALA","HIPER","X","X","decrip");
+        cubo.activos("UL1ST","NOMBRE11","decrip");
+        catalogo.InsertarCD("NOMBRE11","UL1ST","PEPE","X","GUATEMALA","HIPER","X","X","decrip");
+        cubo.activos("ZA49F","NOMBRE12","decrip");
+        catalogo.InsertarCD("NOMBRE12","ZA49F","PEPE","X","GUATEMALA","HIPER","X","X","decrip");
+        cubo.activos("POC30","NOMBRE13","decrip");
+        catalogo.InsertarCD("NOMBRE13","POC30","PEPE","X","GUATEMALA","HIPER","X","X","decrip");
+        cubo.ModiTrans("POC30","Nueva Descripcion");
+        cubo.activos("N36SD","ACPEPE","decrip");
+        catalogo.InsertarCD("ACPEPE","N36SD","PEPE","X","GUATEMALA","HIPER","X","X","decrip");
+        cubo.activos("AA6SD","ACPEPE2","decrip");
+        catalogo.InsertarCD("ACPEPE2","AA6SD","PEPE","X","GUATEMALA","HIPER","X","X","decrip");
     }
 
+    string des=catalogo.vendedor("UL1ST");
+     if(des!=""){
+        catalogo.RenCatalogo("UL1ST","LESLY","DOLAR","ZACAPA");
+        cubo.RentarActivo("UL1ST",des,catalogo.deparv(),catalogo.empresav());
+        Rentactivo.InsertarCD(GenerarClave(),"UL1ST",des,"LESLY","ZACAPA","DOLAR","05/08/2020","3 meses","D");
+    }
 
-    cubo.RentarActivo("JA49FJIEIOVMKFE","PEPE","GUATEMALA","HIPER");
-    cubo.RentarActivo("I9PSDDHT36S8OLS","KEVIN","ZACAPA","HIPER");
-    inicio();
+    des=catalogo.vendedor("I9PSD");
+     if(des!=""){
+	catalogo.RenCatalogo("I9PSD","AMALY","LITTLE","ZACAPA");
+        cubo.RentarActivo("I9PSD",des,catalogo.deparv(),catalogo.empresav());
+        Rentactivo.InsertarCD(GenerarClave(),"I9PSD",des,"AMALY","ZACAPA","LITTLE","05/03/2020","3 meses","D");
+    }
+
+    des=catalogo.vendedor("I7PSD");
+     if(des!=""){
+        cubo.RentarActivo("I7PSD",des,catalogo.deparv(),catalogo.empresav());
+        catalogo.RenCatalogo("I7PSD","JONATAN","PERI","ZACAPA");
+        Rentactivo.InsertarCD(GenerarClave(),"I7PSD",des,"JONATAN","ZACAPA","PERI","05/06/2020","5 meses","D");
+    }
+
+    Admin();
     //cubo.ReporteDepartamento("Zacapa");
 
     cout<<endl;
@@ -105,7 +140,7 @@ void Menus::MUsuarioIngresado(string n){
                 break;
 
             case 3: cout<<"\t \t \t*---------* M O D I F I C A R   A C T I V O  *---------* \n"<<endl;
-                catalogo.TransVende(n);
+                //catalogo.TransVende(n);
                 cout<<"Ingrese activo que desea modificar: ";
                 cin>>name;
                 cout<<"Ingrese descripcion modificar: ";

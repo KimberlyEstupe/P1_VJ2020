@@ -9,62 +9,64 @@ labelloc = "t";
   {rank=same 
      NodoX0  [label= "ADMIN,ADMIN" , group=0]
      NodoX0 ->  NodoX1[dir=both]
-     NodoX1  [label= "ZACAPA" , group=1]
+     NodoX1  [label= "Departamento" , group=1]
      NodoX1 ->  NodoX2[dir=both]
-     NodoX2  [label= "Santa Rosa" , group=2]
+     NodoX2  [label= "ZACAPA" , group=2]
      NodoX2 ->  NodoX3[dir=both]
-     NodoX3  [label= "GUATEMALA" , group=3]
+     NodoX3  [label= "SOLOLA" , group=3]
      NodoX3 ->  NodoX4[dir=both]
-     NodoX4  [label= "CHIQUI" , group=4]
+     NodoX4  [label= "IZABAL Rosa" , group=4]
+     NodoX4 ->  NodoX5[dir=both]
+     NodoX5  [label= "GUATEMALA" , group=5]
   }
  
    NodoX0 ->  NodoY1[dir=both]
-   NodoY1  [label= "HIPER" , group=0]
+   NodoY1  [label= "Empresa" , group=0]
    NodoY1 ->  NodoY2[dir=both]
-   NodoY2  [label= "PERI" , group= 0]
+   NodoY2  [label= "HIPER" , group= 0]
    NodoY2 ->  NodoY3[dir=both]
-   NodoY3  [label= "dOLAR" , group= 0]
+   NodoY3  [label= "PERI" , group= 0]
    NodoY3 ->  NodoY4[dir=both]
-   NodoY4  [label= "little" , group= 0]
+   NodoY4  [label= "DOLAR" , group= 0]
    NodoY4 ->  NodoY5[dir=both]
-   NodoY5  [label= "ESTRELLA" , group= 0]
+   NodoY5  [label= "LITTLE" , group= 0]
 
   {rank=same 
      NodoY1 ->  Nodo11 [color=blue3][dir=both]
-     Nodo11  [label= "* KARLA(KARLA,KARLA) 
-* KEVIN(KEVIN,KEVIN)" , group=1]
-     Nodo11 ->  Nodo21 [color=blue3][dir=both]
-     Nodo21  [label= "* DIEGO(DIEGO,DIEGO)" , group=2]
-     Nodo21 ->  Nodo31 [color=blue3][dir=both]
-     Nodo31  [label= "* PEPE(PEPE,PEPE)" , group=3]
+     Nodo11  [label= "* Nombre(Usuario,Contraseña)" , group=1]
   }
   {rank=same 
-     NodoY2 ->  Nodo12 [color=blue3][dir=both]
-     Nodo12  [label= "* JONATAN(JONATAN,JONATAN)" , group=1]
-     Nodo12 ->  Nodo22 [color=blue3][dir=both]
-     Nodo22  [label= "* MARIA(MARIA,MARIA) 
+     NodoY2 ->  Nodo22 [color=blue3][dir=both]
+     Nodo22  [label= "* KARLA(KARLA,KARLA) 
+* KEVIN(KEVIN,KEVIN)" , group=2]
+     Nodo22 ->  Nodo42 [color=blue3][dir=both]
+     Nodo42  [label= "* DIEGO(DIEGO,DIEGO)" , group=4]
+     Nodo42 ->  Nodo52 [color=blue3][dir=both]
+     Nodo52  [label= "* PEPE(PEPE,PEPE)" , group=5]
+  }
+  {rank=same 
+     NodoY3 ->  Nodo23 [color=blue3][dir=both]
+     Nodo23  [label= "* JONATAN(JONATAN,JONATAN)" , group=2]
+     Nodo23 ->  Nodo33 [color=blue3][dir=both]
+     Nodo33  [label= "* MARIA(MARIA,MARIA) 
 * SHARON(SHARON,SHARON) 
-* NATALIO(NATALIO,NATALIO)" , group=2]
+* NATALIO(NATALIO,NATALIO)" , group=3]
   }
   {rank=same 
-     NodoY3 ->  Nodo13 [color=blue3][dir=both]
-     Nodo13  [label= "* LESLY(LESLY,LESLY)" , group=1]
+     NodoY4 ->  Nodo24 [color=blue3][dir=both]
+     Nodo24  [label= "* LESLY(LESLY,LESLY)" , group=2]
   }
   {rank=same 
-     NodoY4 ->  Nodo14 [color=blue3][dir=both]
-     Nodo14  [label= "* AMALY(AMALY,AMALY)" , group=1]
-  }
-  {rank=same 
-     NodoY5 ->  Nodo45 [color=blue3][dir=both]
-     Nodo45  [label= "* SOFIA(SOFI,SOFI)" , group=4]
+     NodoY5 ->  Nodo25 [color=blue3][dir=both]
+     Nodo25  [label= "* AMALY(AMALY,AMALY)" , group=2]
   }
  
    NodoX1 ->  Nodo11 [color=darkslategrey][dir=both]
-   Nodo11 ->  Nodo12 [color=darkslategrey][dir=both]
-   Nodo12 ->  Nodo13 [color=darkslategrey][dir=both]
-   Nodo13 ->  Nodo14 [color=darkslategrey][dir=both]
-   NodoX2 ->  Nodo21 [color=darkslategrey][dir=both]
-   Nodo21 ->  Nodo22 [color=darkslategrey][dir=both]
-   NodoX3 ->  Nodo31 [color=darkslategrey][dir=both]
-   NodoX4 ->  Nodo45 [color=darkslategrey][dir=both]
+   NodoX2 ->  Nodo22 [color=darkslategrey][dir=both]
+   Nodo22 ->  Nodo23 [color=darkslategrey][dir=both]
+   Nodo23 ->  Nodo24 [color=darkslategrey][dir=both]
+   Nodo24 ->  Nodo25 [color=darkslategrey][dir=both]
+   NodoX3 ->  Nodo33 [color=darkslategrey][dir=both]
+   NodoX4 ->  Nodo42 [color=darkslategrey][dir=both]
+   NodoX5 ->  Nodo52 [color=darkslategrey][dir=both]
 }

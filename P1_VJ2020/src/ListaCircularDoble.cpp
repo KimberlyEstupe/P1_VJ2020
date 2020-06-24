@@ -119,11 +119,11 @@ string ListaCircularDoble::vendedor(string id){
 }
 
 string ListaCircularDoble::empresav(){
-    return Nbuscado->Fecha;
+    return Nbuscado->Empresa;
 }
 
 string ListaCircularDoble::deparv(){
-    return Nbuscado->TiempoRenta;
+    return Nbuscado->Departamento;
 }
 
 NodoCD* ListaCircularDoble::Buscar(string ID){

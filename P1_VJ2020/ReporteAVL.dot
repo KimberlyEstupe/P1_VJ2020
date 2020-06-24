@@ -2,58 +2,93 @@ digraph G {
 rankdir = Lista;
 node [shape = ellipse fontname="Arial" fontsize="10"]
 graph [nodesep = 0.5]
-label = < <font color='blue'> <font point-size='20'> Reporte Departamento: Zacapa </font></font>>;
+label = < <font color='blue'> <font point-size='20'> Reporte Empresa: HIPER </font></font>>;
 labelloc = "t";
-NKarla -> NMP849RINFR4FVSD[color=white]; 
- NIOPSDDHT36S8OLS -> NADPOX6SMDKN546D;
- NIOPSDDHT36S8OLS -> MIOPSDDHT36S8OLS[color=white]; 
- NIOPSDDHT36S8OLS -> NL9MC66SMDKN546D;
- NMP849RINFR4FVSD -> NIOPSDDHT36S8OLS;
- NMP849RINFR4FVSD -> MMP849RINFR4FVSD[color=white]; 
- NMP849RINFR4FVSD -> NSDMC66SMDVN546D;
+NKARLA -> NMP849[color=white]; 
+ NI7PSD -> NADP9X;
+ NI7PSD -> MI7PSD[color=white]; 
+ NI7PSD -> NL9MC6;
+ NMP849 -> NI7PSD;
+ NMP849 -> MMP849[color=white]; 
+ NMP849 -> NSDMC6;
 
-NKarla[label=" Usuario: Karla"]; 
- NADPOX6SMDKN546D [label=" ID: ADPOX6SMDKN546D 
-Nombre: NOMBRE 
-Descripcion: decrip", color=green3, fontcolor=green3]; 
- NIOPSDDHT36S8OLS [label=" ID: IOPSDDHT36S8OLS 
-Nombre: NOMBRE 
-Descripcion: decrip", color=green3, fontcolor=green3]; 
- MIOPSDDHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NL9MC66SMDKN546D [label=" ID: L9MC66SMDKN546D 
-Nombre: NOMBRE 
-Descripcion: decrip", color=green3, fontcolor=green3]; 
- NMP849RINFR4FVSD [label=" ID: MP849RINFR4FVSD 
-Nombre: NOMBRE 
+NKARLA[label=" Usuario: KARLA"]; 
+ NADP9X [label=" ID: ADP9X 
+Nombre: NOMBRE5 
 Descripcion: Nueva Descripcion", color=green3, fontcolor=green3]; 
- MMP849RINFR4FVSD [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NSDMC66SMDVN546D [label=" ID: SDMC66SMDVN546D 
-Nombre: NOMBRE 
-Descripcion: decrip", color=green3, fontcolor=green3]; 
-
-NKevin -> NIOPSLIST36S8OLS[color=white]; 
- NIOPSLIST36S8OLS -> NI9PSDDHT36S8OLS;
- NIOPSLIST36S8OLS -> MIOPSLIST36S8OLS[color=white]; 
- NIOPSLIST36S8OLS -> NVHYS6DHT36S8OLS;
- NVHYS6DHT36S8OLS -> NLÑSODDHT36S8OLS;
- NVHYS6DHT36S8OLS -> MVHYS6DHT36S8OLS[color=white]; 
- NVHYS6DHT36S8OLS -> DVHYS6DHT36S8OLS[color=white]; 
-
-NKevin[label=" Usuario: Kevin"]; 
- NI9PSDDHT36S8OLS [label=" ID: I9PSDDHT36S8OLS 
-Nombre: NOMBRE 
+ NI7PSD [label=" ID: I7PSD 
+Nombre: NOMBRE1 
 Descripcion: decrip", color=deeppink2, fontcolor=deeppink2]; 
- NIOPSLIST36S8OLS [label=" ID: IOPSLIST36S8OLS 
-Nombre: NOMBRE 
+ MI7PSD [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NL9MC6 [label=" ID: L9MC6 
+Nombre: NOMBRE4 
 Descripcion: decrip", color=green3, fontcolor=green3]; 
- MIOPSLIST36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- NLÑSODDHT36S8OLS [label=" ID: LÑSODDHT36S8OLS 
-Nombre: NOMBRE 
+ NMP849 [label=" ID: MP849 
+Nombre: NOMBRE2 
 Descripcion: decrip", color=green3, fontcolor=green3]; 
- NVHYS6DHT36S8OLS [label=" ID: VHYS6DHT36S8OLS 
-Nombre: NOMBRE 
+ MMP849 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NSDMC6 [label=" ID: SDMC6 
+Nombre: NOMBRE3 
 Descripcion: decrip", color=green3, fontcolor=green3]; 
- MVHYS6DHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
- DVHYS6DHT36S8OLS [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+
+NKEVIN -> NSLIST[color=white]; 
+ NSLIST -> NI9PSD;
+ NSLIST -> MSLIST[color=white]; 
+ NSLIST -> NVHYS6;
+ NVHYS6 -> NT36S8;
+ NVHYS6 -> MVHYS6[color=white]; 
+ NVHYS6 -> DVHYS6[color=white]; 
+
+NKEVIN[label=" Usuario: KEVIN"]; 
+ NI9PSD [label=" ID: I9PSD 
+Nombre: NOMBRE8 
+Descripcion: decrip", color=deeppink2, fontcolor=deeppink2]; 
+ NSLIST [label=" ID: SLIST 
+Nombre: NOMBRE7 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MSLIST [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NT36S8 [label=" ID: T36S8 
+Nombre: NOMBRE9 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ NVHYS6 [label=" ID: VHYS6 
+Nombre: NOMBRE6 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MVHYS6 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ DVHYS6 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+
+NPEPE -> NN36SD[color=white]; 
+ NM36S8 -> NAA6SD;
+ NM36S8 -> MM36S8[color=white]; 
+ NM36S8 -> DM36S8[color=white]; 
+ NN36SD -> NM36S8;
+ NN36SD -> MN36SD[color=white]; 
+ NN36SD -> NUL1ST;
+ NUL1ST -> NPOC30;
+ NUL1ST -> MUL1ST[color=white]; 
+ NUL1ST -> NZA49F;
+
+NPEPE[label=" Usuario: PEPE"]; 
+ NAA6SD [label=" ID: AA6SD 
+Nombre: ACPEPE2 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ NM36S8 [label=" ID: M36S8 
+Nombre: NOMBRE10 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MM36S8 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ DM36S8 [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NN36SD [label=" ID: N36SD 
+Nombre: ACPEPE 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
+ MN36SD [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NPOC30 [label=" ID: POC30 
+Nombre: NOMBRE13 
+Descripcion: Nueva Descripcion", color=green3, fontcolor=green3]; 
+ NUL1ST [label=" ID: UL1ST 
+Nombre: NOMBRE11 
+Descripcion: decrip", color=deeppink2, fontcolor=deeppink2]; 
+ MUL1ST [label=" Invis", color=white, bgcolor=white, fontcolor=white]; 
+ NZA49F [label=" ID: ZA49F 
+Nombre: NOMBRE12 
+Descripcion: decrip", color=green3, fontcolor=green3]; 
 
 }
